@@ -1619,7 +1619,7 @@
 
 <div class="container">
   <nav class="sidebar" aria-label="Menú de navegación">
-    <div class="nav-item active" data-target="about" tabindex="0" role="button" aria-pressed="true" aria-label="Sobre mí">
+    <div class="nav-item active" id = 'first_elemento_navbar' data-target="about" tabindex="0" role="button" aria-pressed="true" aria-label="Sobre mí">
       <div class="nav-icon">👤</div>
       <span>Sobre mí</span>
     </div>
@@ -2500,6 +2500,42 @@
     // Aquí iría la lógica para enviar el formulario
     showModal();
     this.reset();
+  });
+
+  // Agregar event listener para el primer elemento del navbar
+  document.addEventListener('DOMContentLoaded', function() {
+    const firstNavItem = document.getElementById('first_elemento_navbar');
+    const aboutContainer = document.querySelector('.about-container');
+    const aboutSection = document.getElementById('about1');
+
+    if (firstNavItem) {
+      firstNavItem.addEventListener('click', function() {
+        // Remover clase active de todas las secciones
+        document.querySelectorAll('.section').forEach(section => {
+          section.classList.remove('active');
+        });
+
+        // Remover clase active de todos los elementos del navbar
+        document.querySelectorAll('.nav-item').forEach(item => {
+          item.classList.remove('active');
+        });
+
+        // Activar el contenedor about y la sección
+        if (aboutContainer) {
+          aboutContainer.classList.add('active');
+          aboutContainer.style.visibility = 'visible';
+          aboutContainer.style.opacity = '1';
+        }
+
+        if (aboutSection) {
+          aboutSection.style.visibility = 'visible';
+          aboutSection.style.opacity = '1';
+        }
+
+        // Activar el elemento del navbar
+        this.classList.add('active');
+      });
+    }
   });
 </script>
 
