@@ -973,6 +973,58 @@
                    0 0 40px rgba(0, 255, 231, 0.4);
     }
   }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 255, 231, 0.1);
+    backdrop-filter: blur(10px);
+  }
+
+  .contact-link-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  .copy-email-btn {
+    background: rgba(0, 255, 231, 0.1);
+    border: 1px solid rgba(0, 255, 231, 0.2);
+    color: #00ffe7;
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+  }
+
+  .copy-email-btn:hover {
+    background: rgba(0, 255, 231, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .copy-email-btn i {
+    font-size: 1rem;
+  }
+
+  .copy-email-btn.copied {
+    background: rgba(0, 255, 0, 0.2);
+    border-color: rgba(0, 255, 0, 0.3);
+    color: #00ff00;
+  }
 </style>
 </head>
 <body>
@@ -999,8 +1051,8 @@
     </div>
   </nav>
 
-  <main class="content" role="main">
-    <section id="about" class="section" tabindex="0" aria-label="Sobre mí">
+  <main class="content" role="main" >
+    <section id="about" class="section active" tabindex="0" aria-label="Sobre mí">
       <div class="nav-dots" id="aboutDots"></div>
       <div class="about-container active" id="about1">
         <img src="assets/foto.jpg" alt="Foto de perfil de Andrés" class="profile-image">
@@ -1334,9 +1386,14 @@
             <span>Instagram</span>
           </a>
 
-          <a href="mailto:tu@email.com" class="social-link">
-            <span class="social-icon">✉️</span>
-            <span>tu@email.com</span>
+          <a href="mailto:andres@example.com" class="contact-link">
+            <div class="contact-link-content">
+              <i class="fas fa-envelope"></i>
+              <span>andres@example.com</span>
+            </div>
+            <button class="copy-email-btn" onclick="copyEmail(event)" title="Copiar email">
+              📋
+            </button>
           </a>
         </div>
 
@@ -1474,19 +1531,43 @@
     initParticles();
   });
 
-  // Iniciar
-  resize();
-  initParticles();
-  animate();
-
-  // Asegurarnos de que la animación se aplique al cargar la página
-  document.addEventListener('DOMContentLoaded', () => {
-    const activeSection = document.querySelector('section.section.active');
-    if (activeSection) {
-      const afterElement = activeSection.querySelector('::after');
-      if (afterElement) {
-        afterElement.style.animation = 'sectionScan 1.5s ease-in-out';
-      }
+  // Inicializar cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', function() {
+    // Asegurar que la sección about esté activa
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.classList.add('active');
+      aboutSection.style.opacity = '1';
+      aboutSection.style.visibility = 'visible';
+    }
+    
+    // Asegurar que el primer contenedor de about esté activo
+    const about1 = document.getElementById('about1');
+    const about2 = document.getElementById('about2');
+    const about3 = document.getElementById('about3');
+    
+    if (about1) {
+      about1.classList.add('active');
+      about1.style.opacity = '1';
+      about1.style.visibility = 'visible';
+    }
+    if (about2) {
+      about2.classList.remove('active');
+      about2.style.opacity = '0';
+      about2.style.visibility = 'hidden';
+    }
+    if (about3) {
+      about3.classList.remove('active');
+      about3.style.opacity = '0';
+      about3.style.visibility = 'hidden';
+    }
+    
+    updateSlides();
+    
+    // Activar el elemento de navegación "Sobre mí"
+    const firstNavItem = document.querySelector('.nav-item[data-section="about"]');
+    if (firstNavItem) {
+      firstNavItem.classList.add('active');
     }
   });
 
@@ -1526,8 +1607,36 @@
     updateSlides();
   }
 
-  // Inicializar
-  updateSlides();
+  // Función para mostrar sección
+  function showSection(sectionId) {
+    // Ocultar todas las secciones
+    document.querySelectorAll('.section').forEach(section => {
+      section.classList.remove('active');
+    });
+    
+    // Mostrar la sección seleccionada
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.classList.add('active');
+    }
+  }
+
+  // Función para copiar email
+  function copyEmail(event) {
+    event.preventDefault();
+    const email = 'andres@example.com';
+    navigator.clipboard.writeText(email).then(() => {
+      const btn = event.currentTarget;
+      const originalContent = btn.innerHTML;
+      btn.innerHTML = '✅';
+      btn.classList.add('copied');
+      
+      setTimeout(() => {
+        btn.innerHTML = originalContent;
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
 </script>
 
 </body>
