@@ -1843,7 +1843,7 @@
     </section>
     <section id="skills" class="section" tabindex="0" aria-label="Habilidades">
       <h1>Mis Habilidades</h1>
-      <p>Un conjunto de tecnologías y herramientas que domino para crear experiencias digitales únicas.</p>
+      <p id = "text-skill2">Un conjunto de tecnologías y herramientas que domino para crear experiencias digitales únicas.</p>
       
       <div class="skills-container">
         <div class="skill-category">
@@ -1985,7 +1985,7 @@
     </section>
     <section id="contact" class="section" tabindex="0" aria-label="Contacto">
       <h1>Contacto</h1>
-      <p>¿Tienes un proyecto en mente? ¡Hablemos! Estoy disponible para colaboraciones y oportunidades.</p>
+      <p id="text-skill3">¿Tienes un proyecto en mente? ¡Hablemos! Estoy disponible para colaboraciones y oportunidades.</p>
       
       <div class="contact-container">
         <div class="social-links">
@@ -2486,12 +2486,84 @@
     observer.observe(element);
   }
 
+  // Función para el efecto de máquina de escribir de skills2
+  function typeWriterSkills2(element, text, speed = 30) {
+    let i = 0;
+    element.innerHTML = '';
+    let isTyping = false;
+    
+    function type() {
+      if (i < text.length && isElementInViewport(element)) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      } else if (!isElementInViewport(element)) {
+        isTyping = false;
+      }
+    }
+    
+    // Observador de intersección para reiniciar la animación cuando el elemento vuelve a ser visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !isTyping) {
+          isTyping = true;
+          i = 0;
+          element.innerHTML = '';
+          type();
+        }
+      });
+    });
+
+    observer.observe(element);
+  }
+
+  // Función para el efecto de máquina de escribir de skills3
+  function typeWriterSkills3(element, text, speed = 30) {
+    let i = 0;
+    element.innerHTML = '';
+    let isTyping = false;
+    
+    function type() {
+      if (i < text.length && isElementInViewport(element)) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      } else if (!isElementInViewport(element)) {
+        isTyping = false;
+      }
+    }
+    
+    // Observador de intersección para reiniciar la animación cuando el elemento vuelve a ser visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !isTyping) {
+          isTyping = true;
+          i = 0;
+          element.innerHTML = '';
+          type();
+        }
+      });
+    });
+
+    observer.observe(element);
+  }
+
   // Inicializar el efecto de máquina de escribir cuando el DOM esté cargado
   document.addEventListener('DOMContentLoaded', function() {
     // Efecto para el texto de skills
     const skillsText = "Desde apps web hasta visualizaciones interactivas, todo con pasión por el detalle y la innovación.";
     const skillsElement = document.getElementById('text-skills');
     typeWriterSkills(skillsElement, skillsText);
+
+    // Efecto para el texto de skills2
+    const skills2Text = "Un conjunto de tecnologías y herramientas que domino para crear experiencias digitales únicas.";
+    const skills2Element = document.getElementById('text-skill2');
+    typeWriterSkills2(skills2Element, skills2Text);
+
+    // Efecto para el texto de skills3
+    const skills3Text = "¿Tienes un proyecto en mente? ¡Hablemos! Estoy disponible para colaboraciones y oportunidades.";
+    const skills3Element = document.getElementById('text-skill3');
+    typeWriterSkills3(skills3Element, skills3Text);
 
     // Efecto para el slogan
     const sloganText = "Soy quien te ayuda a darle vida a ese proyecto que tienes en mente, un gusto.";
