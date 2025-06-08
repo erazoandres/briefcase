@@ -1456,6 +1456,104 @@
   @keyframes blink {
     50% { opacity: 0; }
   }
+
+  /* Estilos del Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 15, 24, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .modal-content {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 255, 231, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+    box-shadow: 
+      0 0 20px rgba(0, 255, 231, 0.1),
+      0 0 40px rgba(0, 255, 231, 0.05);
+  }
+
+  .modal.active .modal-content {
+    transform: translateY(0);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #00ffe7;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  .modal-close:hover {
+    background: rgba(0, 255, 231, 0.1);
+    transform: rotate(90deg);
+  }
+
+  .modal-icon {
+    font-size: 3rem;
+    color: #00ffe7;
+    margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .modal h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .modal p {
+    color: #cdeffb;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .modal-subtext {
+    color: #8df9ff;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 </style>
 </head>
 <body>
@@ -1855,6 +1953,19 @@
   </main>
 </div>
 
+<!-- Modal de confirmación -->
+<div class="modal" id="confirmationModal">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Cerrar modal">×</button>
+    <div class="modal-icon">
+      <i class="fas fa-paper-plane"></i>
+    </div>
+    <h3>¡Mensaje Enviado!</h3>
+    <p>Tu mensaje ha sido enviado exitosamente. Una copia ha sido enviada a tu correo electrónico.</p>
+    <p class="modal-subtext">Nos pondremos en contacto contigo pronto.</p>
+  </div>
+</div>
+
 <script>
   // Navegación avanzada con animación y ARIA
   const navItems = document.querySelectorAll('.nav-item');
@@ -2246,6 +2357,33 @@
     }
     
     // ... resto del código existente ...
+  });
+
+  // Función para mostrar el modal
+  function showModal() {
+    const modal = document.getElementById('confirmationModal');
+    modal.classList.add('active');
+    
+    // Cerrar modal al hacer clic en el botón de cerrar
+    const closeBtn = modal.querySelector('.modal-close');
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    // Cerrar modal al hacer clic fuera del contenido
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+  }
+
+  // Modificar el evento submit del formulario
+  document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Aquí iría la lógica para enviar el formulario
+    showModal();
+    this.reset();
   });
 </script>
 
