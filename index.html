@@ -2389,27 +2389,90 @@
     });
   }
 
+  // Función para verificar si un elemento está visible en la pantalla
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
   // Función para el efecto de máquina de escribir
   function typeWriter(element, text, speed = 50) {
     let i = 0;
     element.innerHTML = '';
+    let isTyping = false;
     
     function type() {
-      if (i < text.length) {
+      if (i < text.length && isElementInViewport(element)) {
         element.innerHTML += text.charAt(i);
         i++;
         setTimeout(type, speed);
+      } else if (!isElementInViewport(element)) {
+        isTyping = false;
       }
     }
     
-    type();
+    // Observador de intersección para reiniciar la animación cuando el elemento vuelve a ser visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !isTyping) {
+          isTyping = true;
+          i = 0;
+          element.innerHTML = '';
+          type();
+        }
+      });
+    });
+
+    observer.observe(element);
+  }
+
+  // Función para el efecto de máquina de escribir de skills
+  function typeWriterSkills(element, text, speed = 30) {
+    let i = 0;
+    element.innerHTML = '';
+    let isTyping = false;
+    
+    function type() {
+      if (i < text.length && isElementInViewport(element)) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      } else if (!isElementInViewport(element)) {
+        isTyping = false;
+      }
+    }
+    
+    // Observador de intersección para reiniciar la animación cuando el elemento vuelve a ser visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !isTyping) {
+          isTyping = true;
+          i = 0;
+          element.innerHTML = '';
+          type();
+        }
+      });
+    });
+
+    observer.observe(element);
   }
 
   // Inicializar el efecto de máquina de escribir cuando el DOM esté cargado
   document.addEventListener('DOMContentLoaded', function() {
-    const text = "Desde apps web hasta visualizaciones interactivas, todo con pasión por el detalle y la innovación.";
-    const element = document.getElementById('text-skills');
-    typeWriter(element, text);
+    // Efecto para el texto de skills
+    const skillsText = "Desde apps web hasta visualizaciones interactivas, todo con pasión por el detalle y la innovación.";
+    const skillsElement = document.getElementById('text-skills');
+    typeWriterSkills(skillsElement, skillsText);
+
+    // Efecto para el slogan
+    const sloganText = "Soy quien te ayuda a darle vida a ese proyecto que tienes en mente, un gusto.";
+    const sloganElement = document.querySelector('.slogan');
+    typeWriter(sloganElement, sloganText);
   });
 
   // Función para mostrar el modal
