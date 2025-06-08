@@ -234,6 +234,95 @@
     transform: scale(1.05);
     box-shadow: 0 0 30px rgba(0, 255, 231, 0.5);
   }
+
+  /* Estilos para las tarjetas de proyectos */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .project-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 231, 0.1);
+    border-color: rgba(0, 255, 231, 0.3);
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(0, 255, 231, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .project-card:hover::before {
+    transform: translateX(100%);
+  }
+
+  .project-title {
+    color: #00ffe7;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .project-description {
+    color: #cdeffb;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-tech {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .tech-tag {
+    background: rgba(0, 255, 231, 0.1);
+    color: #00ffe7;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .project-link {
+    color: #00ffe7;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+
+  .project-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(0, 255, 231, 0.5);
+  }
 </style>
 </head>
 <body>
@@ -269,6 +358,64 @@
     <section id="projects" class="section" tabindex="0" aria-label="Proyectos">
       <h1>Proyectos Destacados</h1>
       <p>Desde apps web hasta visualizaciones interactivas, todo con pasión por el detalle y la innovación.</p>
+      
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3 class="project-title">Galaxy Explorer</h3>
+          <p class="project-description">Una aplicación web interactiva que permite explorar el universo en 3D, con datos reales de la NASA y visualizaciones impresionantes.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Three.js</span>
+            <span class="tech-tag">WebGL</span>
+            <span class="tech-tag">NASA API</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">🌐 Demo</a>
+            <a href="#" class="project-link">📦 GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3 class="project-title">Quantum Notes</h3>
+          <p class="project-description">Aplicación de notas con encriptación cuántica, interfaz minimalista y sincronización en tiempo real entre dispositivos.</p>
+          <div class="project-tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">Web Crypto</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">🌐 Demo</a>
+            <a href="#" class="project-link">📦 GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3 class="project-title">Neural Art</h3>
+          <p class="project-description">Plataforma de generación de arte usando inteligencia artificial, con estilos personalizables y exportación en alta resolución.</p>
+          <div class="project-tech">
+            <span class="tech-tag">TensorFlow.js</span>
+            <span class="tech-tag">Canvas API</span>
+            <span class="tech-tag">Web Workers</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">🌐 Demo</a>
+            <a href="#" class="project-link">📦 GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3 class="project-title">Cosmic Weather</h3>
+          <p class="project-description">Aplicación de clima con visualización de datos atmosféricos en tiempo real y predicciones basadas en machine learning.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">D3.js</span>
+            <span class="tech-tag">OpenWeather API</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">🌐 Demo</a>
+            <a href="#" class="project-link">📦 GitHub</a>
+          </div>
+        </div>
+      </div>
     </section>
     <section id="skills" class="section" tabindex="0" aria-label="Habilidades">
       <h1>Mis Habilidades</h1>
