@@ -145,6 +145,7 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   .section-header {
@@ -161,21 +162,8 @@
     margin-bottom: 0;
   }
 
-  section.section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.2) 50%,
-      transparent 100%
-    );
-    transform: translateX(-100%);
-    pointer-events: none;
+  section.section::before {
+    display: none;
   }
 
   section.section.active {
@@ -299,6 +287,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
   }
 
   .project-card::before {
@@ -396,6 +386,24 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(0, 255, 231, 0.03), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .skill-category:hover::before {
+    transform: translateX(100%);
   }
 
   .category-title {
@@ -511,58 +519,128 @@
   }
 
   .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(0, 255, 231, 0.03), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .contact-form:hover::before {
+    transform: translateX(100%);
   }
 
   .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
+    position: relative;
   }
 
-  .form-label {
+  .form-group label {
+    display: block;
     color: #cdeffb;
-    font-size: 1rem;
-  }
-
-  .form-input,
-  .form-textarea {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 0.8rem;
-    color: #ffffff;
-    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.85rem;
     transition: all 0.3s ease;
   }
 
-  .form-input:focus,
-  .form-textarea:focus {
-    outline: none;
-    border-color: #00ffe7;
-    box-shadow: 0 0 10px rgba(0, 255, 231, 0.2);
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.6rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
   }
 
-  .form-textarea {
-    min-height: 150px;
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #00ffe7;
+    box-shadow: 0 0 0 2px rgba(0, 255, 231, 0.1);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(205, 239, 251, 0.5);
+  }
+
+  .form-group textarea {
+    min-height: 80px;
     resize: vertical;
   }
 
   .submit-btn {
-    background: linear-gradient(45deg, #00ffe7, #00ff9d);
-    color: #0f0f18;
+    background: linear-gradient(45deg, #00ffe7, #00b8ff);
+    color: #000;
     border: none;
-    border-radius: 8px;
-    padding: 1rem;
-    font-size: 1.1rem;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0.5rem;
+  }
+
+  .submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
   }
 
   .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 255, 231, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 255, 231, 0.2);
+  }
+
+  .submit-btn:hover::before {
+    transform: translateX(100%);
+  }
+
+  .submit-btn:active {
+    transform: translateY(0);
+  }
+
+  /* Ajustes responsive */
+  @media (max-width: 768px) {
+    .contact-form {
+      padding: 0.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 0.6rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 0.5rem;
+    }
   }
 
   /* Ajustes específicos para cada sección */
@@ -832,28 +910,25 @@
             <span class="social-icon">📸</span>
             <span>Instagram</span>
           </a>
-          <a href="https://twitter.com/tuusuario" target="_blank" class="social-link">
-            <span class="social-icon">🐦</span>
-            <span>Twitter</span>
-          </a>
+
           <a href="mailto:tu@email.com" class="social-link">
             <span class="social-icon">✉️</span>
             <span>tu@email.com</span>
           </a>
         </div>
 
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form">
           <div class="form-group">
-            <label for="name" class="form-label">Nombre</label>
-            <input type="text" id="name" class="form-input" required>
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
           </div>
           <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" class="form-input" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
           </div>
           <div class="form-group">
-            <label for="message" class="form-label">Mensaje</label>
-            <textarea id="message" class="form-textarea" required></textarea>
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" placeholder="¿En qué puedo ayudarte?" required></textarea>
           </div>
           <button type="submit" class="submit-btn">Enviar Mensaje</button>
         </form>
