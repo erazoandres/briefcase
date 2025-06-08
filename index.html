@@ -147,10 +147,14 @@
     padding: 2rem;
     box-sizing: border-box;
     overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
   }
 
   .about-container.active {
     transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
   }
 
   .about-container.next {
@@ -1585,20 +1589,55 @@
   });
 
   function updateSlides() {
-    aboutContainers.forEach((container, index) => {
-      container.className = 'about-container';
-      if (index === currentIndex) {
-        container.classList.add('active');
-      } else if (index > currentIndex) {
-        container.classList.add('next');
-      } else {
-        container.classList.add('prev');
-      }
-    });
-
-    // Actualizar dots
-    document.querySelectorAll('.nav-dot').forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
+    const sections = document.querySelectorAll('.section');
+    const dots = document.querySelectorAll('.nav-dots');
+    
+    sections.forEach((section, index) => {
+      const sectionDots = dots[index];
+      if (!sectionDots) return;
+      
+      sectionDots.innerHTML = '';
+      const containers = section.querySelectorAll('.about-container');
+      
+      containers.forEach((container, dotIndex) => {
+        const dot = document.createElement('div');
+        dot.classList.add('nav-dot');
+        if (container.classList.contains('active')) {
+          dot.classList.add('active');
+        }
+        
+        dot.addEventListener('click', () => {
+          // Remover clase active de todos los contenedores
+          containers.forEach(c => {
+            c.classList.remove('active');
+            c.classList.remove('next');
+            c.classList.remove('prev');
+            c.style.opacity = '0';
+            c.style.visibility = 'hidden';
+          });
+          
+          // Activar el contenedor seleccionado
+          container.classList.add('active');
+          container.style.opacity = '1';
+          container.style.visibility = 'visible';
+          
+          // Actualizar clases next y prev para los demás contenedores
+          containers.forEach((c, i) => {
+            if (i < dotIndex) {
+              c.classList.add('prev');
+            } else if (i > dotIndex) {
+              c.classList.add('next');
+            }
+          });
+          
+          // Actualizar puntos de navegación
+          sectionDots.querySelectorAll('.nav-dot').forEach((d, i) => {
+            d.classList.toggle('active', i === dotIndex);
+          });
+        });
+        
+        sectionDots.appendChild(dot);
+      });
     });
   }
 
