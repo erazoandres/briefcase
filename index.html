@@ -948,27 +948,33 @@
   }
 
   .wave-text {
-    display: inline-block;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    color: #cdeffb;
     position: relative;
+    display: inline-block;
     width: 100%;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    letter-spacing: 0.5px;
   }
 
   .wave-text .line {
     display: block;
     position: relative;
-    margin-bottom: 0.5rem;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing-slogan 4s steps(77) 1;
   }
 
-  .wave-text .line:first-child {
-    animation: typing-first 4s steps(24) 1;
+  @keyframes typing-slogan {
+    from { width: 0; }
+    to { width: 100%; }
   }
 
-  .wave-text .line:last-child {
-    animation: typing-second 4s steps(45) 1;
-    animation-delay: 4s;
+  .wave-text span {
+    display: inline;
+    opacity: 0;
+    animation: fadeIn 0.1s forwards;
+    animation-delay: calc(0.05s * var(--i));
   }
 
   .wave-text .line::after {
@@ -980,39 +986,6 @@
     width: 3px;
     background: #00ffe7;
     animation: blink 0.7s step-end infinite;
-  }
-
-  @keyframes typing-first {
-    from { width: 0; }
-    to { width: 100%; }
-  }
-
-  @keyframes typing-second {
-    from { width: 0; }
-    to { width: 100%; }
-  }
-
-  @keyframes blink {
-    50% { background: transparent; }
-  }
-
-  .wave-text span {
-    display: inline;
-    opacity: 0;
-    animation: fadeIn 0.1s forwards;
-    animation-delay: calc(0.05s * var(--i));
-  }
-
-  .wave-text .line:first-child span {
-    animation-delay: calc(0.15s * var(--i));
-  }
-
-  .wave-text .line:last-child span {
-    animation-delay: calc(0.15s * var(--i) + 4s);
-  }
-
-  @keyframes fadeIn {
-    to { opacity: 1; }
   }
 
   .wave-text span.space {
@@ -1090,20 +1063,81 @@
     padding: 1rem;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .education-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #00ffe7, #00b8ff);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  .education-item:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    border-color: #00ffe7;
+    box-shadow: 
+      0 0 10px rgba(0, 255, 231, 0.5),
+      0 0 20px rgba(0, 255, 231, 0.3),
+      0 0 30px rgba(0, 255, 231, 0.1);
+  }
+
+  .education-item:hover::before {
+    opacity: 0.1;
+  }
+
+  .education-item:hover .education-icon {
+    color: #00ffe7;
+    text-shadow: 
+      0 0 3px #00ffe7,
+      0 0 6px #00ffe7;
+    animation: neonPulse 1.5s infinite;
+  }
+
+  .education-item:hover .education-content h4 {
+    color: #ffffff;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
+
+  @keyframes neonPulse {
+    0% {
+      text-shadow: 
+        0 0 3px #00ffe7,
+        0 0 6px #00ffe7;
+    }
+    50% {
+      text-shadow: 
+        0 0 5px #00ffe7,
+        0 0 10px #00ffe7;
+    }
+    100% {
+      text-shadow: 
+        0 0 3px #00ffe7,
+        0 0 6px #00ffe7;
+    }
   }
 
   .education-icon {
     font-size: 1.5rem;
     color: #00ffe7;
-  }
-
-  .education-content {
-    flex: 1;
+    transition: all 0.3s ease;
   }
 
   .education-content h4 {
     color: #00ffe7;
     margin-bottom: 0.3rem;
+    transition: all 0.3s ease;
   }
 
   .education-content p {
@@ -1226,20 +1260,81 @@
     padding: 1rem;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .education-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #00ffe7, #00b8ff);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  .education-item:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    border-color: #00ffe7;
+    box-shadow: 
+      0 0 10px rgba(0, 255, 231, 0.5),
+      0 0 20px rgba(0, 255, 231, 0.3),
+      0 0 30px rgba(0, 255, 231, 0.1);
+  }
+
+  .education-item:hover::before {
+    opacity: 0.1;
+  }
+
+  .education-item:hover .education-icon {
+    color: #00ffe7;
+    text-shadow: 
+      0 0 3px #00ffe7,
+      0 0 6px #00ffe7;
+    animation: neonPulse 1.5s infinite;
+  }
+
+  .education-item:hover .education-content h4 {
+    color: #ffffff;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
+
+  @keyframes neonPulse {
+    0% {
+      text-shadow: 
+        0 0 3px #00ffe7,
+        0 0 6px #00ffe7;
+    }
+    50% {
+      text-shadow: 
+        0 0 5px #00ffe7,
+        0 0 10px #00ffe7;
+    }
+    100% {
+      text-shadow: 
+        0 0 3px #00ffe7,
+        0 0 6px #00ffe7;
+    }
   }
 
   .education-icon {
     font-size: 1.5rem;
     color: #00ffe7;
-  }
-
-  .education-content {
-    flex: 1;
+    transition: all 0.3s ease;
   }
 
   .education-content h4 {
     color: #00ffe7;
     margin-bottom: 0.3rem;
+    transition: all 0.3s ease;
   }
 
   .education-content p {
@@ -1301,9 +1396,17 @@
     font-size: 1.2rem;
     margin: 1rem 0;
     color: #cdeffb;
+    position: relative;
+    display: inline-block;
+    width: 100%;
   }
 
   .slogan.wave-text .line {
+    display: block;
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
     animation: typing-slogan 4s steps(77) 1;
   }
 
@@ -1317,6 +1420,41 @@
     opacity: 0;
     animation: fadeIn 0.1s forwards;
     animation-delay: calc(0.05s * var(--i));
+  }
+
+  .slogan.wave-text .line::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: #00ffe7;
+    animation: blink 0.7s step-end infinite;
+  }
+
+  .slogan-container {
+    margin: 1rem 0;
+    min-height: 2em;
+  }
+
+  .slogan {
+    font-size: 1.2rem;
+    color: #cdeffb;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+  }
+
+  .slogan::after {
+    content: '|';
+    position: absolute;
+    right: -3px;
+    animation: blink 0.7s infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
   }
 </style>
 </head>
@@ -1356,87 +1494,9 @@
             <span class="greeting">¡Hola!</span>
             <span class="name"> soy Andrés Erazo</span>
           </h1>
-          <p class="slogan wave-text">
-            <span class="line">
-              <span style="--i:1">S</span>
-              <span style="--i:2">o</span>
-              <span style="--i:3">y</span>
-              <span class="space" style="--i:4"> </span>
-              <span style="--i:5">q</span>
-              <span style="--i:6">u</span>
-              <span style="--i:7">i</span>
-              <span style="--i:8">e</span>
-              <span style="--i:9">n</span>
-              <span class="space" style="--i:10"> </span>
-              <span style="--i:11">t</span>
-              <span style="--i:12">e</span>
-              <span class="space" style="--i:13"> </span>
-              <span style="--i:14">a</span>
-              <span style="--i:15">y</span>
-              <span style="--i:16">u</span>
-              <span style="--i:17">d</span>
-              <span style="--i:18">á</span>
-              <span class="space" style="--i:19"> </span>
-              <span style="--i:20">a</span>
-              <span class="space" style="--i:21"> </span>
-              <span style="--i:22">d</span>
-              <span style="--i:23">a</span>
-              <span style="--i:24">r</span>
-              <span style="--i:25">l</span>
-              <span style="--i:26">e</span>
-              <span class="space" style="--i:27"> </span>
-              <span style="--i:28">v</span>
-              <span style="--i:29">i</span>
-              <span style="--i:30">d</span>
-              <span style="--i:31">a</span>
-              <span class="space" style="--i:32"> </span>
-              <span style="--i:33">a</span>
-              <span class="space" style="--i:34"> </span>
-              <span style="--i:35">e</span>
-              <span style="--i:36">s</span>
-              <span style="--i:37">e</span>
-              <span class="space" style="--i:38"> </span>
-              <span style="--i:39">p</span>
-              <span style="--i:40">r</span>
-              <span style="--i:41">o</span>
-              <span style="--i:42">y</span>
-              <span style="--i:43">e</span>
-              <span style="--i:44">c</span>
-              <span style="--i:45">t</span>
-              <span style="--i:46">o</span>
-              <span class="space" style="--i:47"> </span>
-              <span style="--i:48">q</span>
-              <span style="--i:49">u</span>
-              <span style="--i:50">e</span>
-              <span class="space" style="--i:51"> </span>
-              <span style="--i:52">t</span>
-              <span style="--i:53">i</span>
-              <span style="--i:54">e</span>
-              <span style="--i:55">n</span>
-              <span style="--i:56">e</span>
-              <span class="space" style="--i:57"> </span>
-              <span style="--i:58">e</span>
-              <span style="--i:59">n</span>
-              <span class="space" style="--i:60"> </span>
-              <span style="--i:61">m</span>
-              <span style="--i:62">e</span>
-              <span style="--i:63">n</span>
-              <span style="--i:64">t</span>
-              <span style="--i:65">e</span>
-              <span class="space" style="--i:66"> </span>
-              <span style="--i:67">,</span>
-              <span class="space" style="--i:68"> </span>
-              <span style="--i:69">u</span>
-              <span style="--i:70">n</span>
-              <span class="space" style="--i:71"> </span>
-              <span style="--i:72">g</span>
-              <span style="--i:73">u</span>
-              <span style="--i:74">s</span>
-              <span style="--i:75">t</span>
-              <span style="--i:76">o</span>
-              <span style="--i:77">.</span>
-            </span>
-          </p>
+          <div class="slogan-container">
+            <p class="slogan" id="slogan-text">Soy quien te ayuda a darle vida a ese proyecto que tienes en mente, un gusto.</p>
+          </div>
         </div>
       </div>
       <div class="about-container next" id="about2">
@@ -2160,6 +2220,33 @@
       }, 2000);
     });
   }
+
+  // Función para el efecto de máquina de escribir
+  function typeWriter(element, text, speed = 50) {
+    let i = 0;
+    element.innerHTML = '';
+    
+    function type() {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      }
+    }
+    
+    type();
+  }
+
+  // Inicializar el efecto cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', function() {
+    const sloganText = document.getElementById('slogan-text');
+    if (sloganText) {
+      const text = sloganText.textContent;
+      typeWriter(sloganText, text, 50);
+    }
+    
+    // ... resto del código existente ...
+  });
 </script>
 
 </body>
