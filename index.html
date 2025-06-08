@@ -176,6 +176,41 @@
     animation: sectionScan 1.5s ease-in-out;
   }
 
+  @keyframes waveJump {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-15px) rotate(-5deg);
+    }
+    50% {
+      transform: translateY(0) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-8px) rotate(5deg);
+    }
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+  }
+
+  .greeting {
+    display: inline-block;
+    animation: waveJump 2.5s ease-in-out 1;
+    color: #00ffe7;
+    text-shadow: 0 0 8px rgba(0, 255, 231, 0.3);
+    transform-origin: bottom center;
+  }
+
+  .greeting:hover {
+    animation: waveJump 2.5s ease-in-out infinite;
+  }
+
+  .name {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  }
+
   h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
@@ -685,8 +720,12 @@
   <main class="content" role="main">
     <section id="about" class="section active" tabindex="0" aria-label="Sobre mí">
       <img src="assets/foto.jpg" alt="Foto de perfil de Andrés" class="profile-image">
-      <h1>Hola, soy Andrés</h1>
-      <p>Un desarrollador que fusiona arte y código para crear experiencias únicas e inmersivas.</p>
+      <div class="section-header">
+        <h1>
+          <span class="greeting">¡Hola! </span>, soy <span class="name">Andrés</span>
+        </h1>
+        <p>Desarrollador Full Stack apasionado por crear experiencias web únicas</p>
+      </div>
     </section>
     <section id="projects" class="section" tabindex="0" aria-label="Proyectos">
       <h1>Proyectos Destacados</h1>
