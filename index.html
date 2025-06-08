@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portafolio Galáctico</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body, html {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: #0f0f18;
+    overflow-x: hidden;
+    color: #eaeaea;
+    perspective: 1200px;
+    user-select: none;
+  }
+
+  /* Fondo interactivo con partículas */
+  #backgroundCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: -2;
+    display: block;
+    background: linear-gradient(45deg, #0d0d17, #15152d);
+  }
+
+  /* Contenedor general */
+  .container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  /* Navbar vertical expandible */
+  nav.sidebar {
+    width: 70px;
+    background: rgba(255 255 255 / 0.07);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 15px rgba(0,255,255,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: visible;
+    position: relative;
+  }
+  nav.sidebar:hover {
+    width: 250px;
+  }
+  nav.sidebar:hover .nav-item span {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Botones */
+  .nav-item {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #8df9ff;
+    font-weight: 600;
+    font-size: 1.15rem;
+    user-select: none;
+    position: relative;
+    transition: color 0.3s ease;
+    gap: 1.2rem;
+    white-space: nowrap;
+  }
+  .nav-item:hover, .nav-item.active {
+    color: #00ffe7;
+    background: rgba(0,255,231,0.1);
+    border-left: 4px solid #00ffe7;
+    box-shadow: 0 0 10px #00ffe7aa;
+  }
+  .nav-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+  .nav-item span {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  /* Contenido */
+  main.content {
+    flex: 1;
+    padding: 4rem 5rem;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    perspective: 800px;
+  }
+
+  section.section {
+    opacity: 0;
+    transform: translateY(30px) rotateX(15deg);
+    transition: all 0.6s ease-out;
+    pointer-events: none;
+    max-width: 800px;
+  }
+  section.section.active {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    pointer-events: auto;
+  }
+
+  h1 {
+    font-weight: 600;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.05em;
+    color: #00ffe7;
+    text-shadow: 0 0 8px #00ffe7aa;
+  }
+  p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #cdeffb;
+  }
+
+  /* Scrollbar invisible */
+  main.content::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    nav.sidebar {
+      width: 60px !important;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      flex-direction: row;
+      padding: 0;
+      justify-content: space-around;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+    nav.sidebar:hover {
+      width: 100vw;
+    }
+    .nav-item span {
+      display: none !important;
+    }
+    main.content {
+      padding: 2rem 1.5rem 5rem 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="backgroundCanvas"></canvas>
+
+<div class="container">
+  <nav class="sidebar" aria-label="Menú de navegación">
+    <div class="nav-item active" data-target="about" tabindex="0" role="button" aria-pressed="true" aria-label="Sobre mí">
+      <div class="nav-icon">👤</div>
+      <span>Sobre mí</span>
+    </div>
+    <div class="nav-item" data-target="projects" tabindex="0" role="button" aria-pressed="false" aria-label="Proyectos">
+      <div class="nav-icon">🚀</div>
+      <span>Proyectos</span>
+    </div>
+    <div class="nav-item" data-target="skills" tabindex="0" role="button" aria-pressed="false" aria-label="Habilidades">
+      <div class="nav-icon">⚙️</div>
+      <span>Habilidades</span>
+    </div>
+    <div class="nav-item" data-target="contact" tabindex="0" role="button" aria-pressed="false" aria-label="Contacto">
+      <div class="nav-icon">📧</div>
+      <span>Contacto</span>
+    </div>
+  </nav>
+
+  <main class="content" role="main">
+    <section id="about" class="section active" tabindex="0" aria-label="Sobre mí">
+      <h1>Hola, soy Andrés</h1>
+      <p>Un desarrollador que fusiona arte y código para crear experiencias únicas e inmersivas.</p>
+    </section>
+    <section id="projects" class="section" tabindex="0" aria-label="Proyectos">
+      <h1>Proyectos Destacados</h1>
+      <p>Desde apps web hasta visualizaciones interactivas, todo con pasión por el detalle y la innovación.</p>
+    </section>
+    <section id="skills" class="section" tabindex="0" aria-label="Habilidades">
+      <h1>Mis Habilidades</h1>
+      <p>JavaScript moderno, animaciones CSS avanzadas, diseño UI/UX, accesibilidad y optimización web.</p>
+    </section>
+    <section id="contact" class="section" tabindex="0" aria-label="Contacto">
+      <h1>Contacto</h1>
+      <p>¿Quieres colaborar? Escríbeme a <a href="mailto:ejemplo@correo.com">ejemplo@correo.com</a></p>
+    </section>
+  </main>
+</div>
+
+<script>
+  // Navegación avanzada con animación y ARIA
+  const navItems = document.querySelectorAll('.nav-item');
+  const sections = document.querySelectorAll('section.section');
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      activateSection(item);
+    });
+    item.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activateSection(item);
+      }
+    });
+  });
+
+  function activateSection(selectedItem) {
+    navItems.forEach(item => {
+      item.classList.remove('active');
+      item.setAttribute('aria-pressed', 'false');
+    });
+    sections.forEach(sec => sec.classList.remove('active'));
+
+    selectedItem.classList.add('active');
+    selectedItem.setAttribute('aria-pressed', 'true');
+    document.getElementById(selectedItem.dataset.target).classList.add('active');
+    document.getElementById(selectedItem.dataset.target).focus();
+  }
+
+  // Fondo de partículas con canvas (sin librerías)
+  const canvas = document.getElementById('backgroundCanvas');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = Math.random() * 2 + 1;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.speedY = (Math.random() - 0.5) * 0.3;
+      this.alpha = Math.random() * 0.6 + 0.3;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      if(this.x < 0 || this.x > width) this.speedX *= -1;
+      if(this.y < 0 || this.y > height) this.speedY *= -1;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(0, 255, 231, ${this.alpha})`;
+      ctx.shadowColor = 'rgba(0, 255, 231, 0.7)';
+      ctx.shadowBlur = 6;
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    for(let i=0; i<100; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width * devicePixelRatio;
+    canvas.height = height * devicePixelRatio;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+    initParticles();
+  });
+
+  // Iniciar
+  resize();
+  initParticles();
+  animate();
+</script>
+
+</body>
+</html>

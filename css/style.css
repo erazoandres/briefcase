@@ -1,0 +1,135 @@
+/* Tipografía moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+  height: 100%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar vertical */
+.sidebar {
+  width: 250px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 30px rgba(255,255,255,0.1);
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.sidebar ul li span {
+  font-size: 1.3rem;
+}
+
+/* Efecto hover y activo */
+.sidebar ul li:hover,
+.sidebar ul li.active {
+  background: rgba(255, 255, 255, 0.15);
+  border-left: 4px solid #ff6f61;
+  color: #ff6f61;
+}
+
+/* Contenido */
+.content {
+  margin-left: 250px;
+  padding: 3rem 4rem;
+  flex: 1;
+  overflow-y: auto;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(5px);
+  border-radius: 0 20px 20px 0;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.1);
+}
+
+/* Secciones */
+.section {
+  display: none;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.section.active {
+  display: block;
+}
+
+h1 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-weight: 300;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    padding: 0.5rem 1rem;
+    justify-content: center;
+  }
+  .sidebar ul {
+    display: flex;
+    gap: 1rem;
+  }
+  .sidebar ul li {
+    border-left: none;
+    border-bottom: 4px solid transparent;
+    padding: 0.5rem 1rem;
+  }
+  .sidebar ul li:hover,
+  .sidebar ul li.active {
+    border-left: none;
+    border-bottom: 4px solid #ff6f61;
+  }
+  .content {
+    margin-left: 0;
+    padding: 2rem 1.5rem;
+    border-radius: 0;
+  }
+}
