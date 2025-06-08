@@ -91,15 +91,15 @@
     font-size: 1.15rem;
     user-select: none;
     position: relative;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     gap: 1.2rem;
     white-space: nowrap;
   }
   .nav-item:hover, .nav-item.active {
     color: #00ffe7;
-    background: rgba(0,255,231,0.1);
+    background: rgba(0, 255, 231, 0.1);
     border-left: 4px solid #00ffe7;
-    box-shadow: 0 0 10px #00ffe7aa;
+    box-shadow: 0 0 10px rgba(0, 255, 231, 0.2);
   }
   .nav-icon {
     font-size: 2rem;
@@ -121,17 +121,54 @@
     perspective: 800px;
   }
 
+  /* Animación de barrido para secciones */
+  @keyframes sectionScan {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
   section.section {
     opacity: 0;
-    transform: translateY(30px) rotateX(15deg);
+    transform: translateY(30px);
     transition: all 0.6s ease-out;
     pointer-events: none;
     max-width: 800px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
   }
+
+  section.section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+
   section.section.active {
     opacity: 1;
-    transform: translateY(0) rotateX(0);
+    transform: translateY(0);
     pointer-events: auto;
+  }
+
+  section.section.active::after {
+    animation: sectionScan 1.5s ease-in-out;
   }
 
   h1 {
@@ -140,8 +177,9 @@
     margin-bottom: 1rem;
     letter-spacing: -0.05em;
     color: #00ffe7;
-    text-shadow: 0 0 8px #00ffe7aa;
+    text-shadow: 0 0 8px rgba(0, 255, 231, 0.3);
   }
+
   p {
     font-weight: 300;
     font-size: 1.2rem;
@@ -179,6 +217,23 @@
       padding: 2rem 1.5rem 5rem 1.5rem;
     }
   }
+
+  /* Estilos para la imagen de perfil */
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 2rem 0;
+    border: 3px solid #00ffe7;
+    box-shadow: 0 0 20px rgba(0, 255, 231, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 255, 231, 0.5);
+  }
 </style>
 </head>
 <body>
@@ -207,6 +262,7 @@
 
   <main class="content" role="main">
     <section id="about" class="section active" tabindex="0" aria-label="Sobre mí">
+      <img src="assets/foto.jpg" alt="Foto de perfil de Andrés" class="profile-image">
       <h1>Hola, soy Andrés</h1>
       <p>Un desarrollador que fusiona arte y código para crear experiencias únicas e inmersivas.</p>
     </section>
@@ -243,16 +299,35 @@
   });
 
   function activateSection(selectedItem) {
+    // Remover clases activas
     navItems.forEach(item => {
       item.classList.remove('active');
       item.setAttribute('aria-pressed', 'false');
     });
-    sections.forEach(sec => sec.classList.remove('active'));
+    
+    sections.forEach(sec => {
+      sec.classList.remove('active');
+      const afterElement = sec.querySelector('::after');
+      if (afterElement) {
+        afterElement.style.animation = 'none';
+      }
+    });
 
+    // Activar nueva sección
     selectedItem.classList.add('active');
     selectedItem.setAttribute('aria-pressed', 'true');
-    document.getElementById(selectedItem.dataset.target).classList.add('active');
-    document.getElementById(selectedItem.dataset.target).focus();
+    const targetSection = document.getElementById(selectedItem.dataset.target);
+    targetSection.classList.add('active');
+    
+    // Forzar la animación
+    const afterElement = targetSection.querySelector('::after');
+    if (afterElement) {
+      afterElement.style.animation = 'none';
+      void afterElement.offsetWidth; // Forzar reflow
+      afterElement.style.animation = 'sectionScan 1.5s ease-in-out';
+    }
+    
+    targetSection.focus();
   }
 
   // Fondo de partículas con canvas (sin librerías)
@@ -324,6 +399,17 @@
   resize();
   initParticles();
   animate();
+
+  // Asegurarnos de que la animación se aplique al cargar la página
+  document.addEventListener('DOMContentLoaded', () => {
+    const activeSection = document.querySelector('section.section.active');
+    if (activeSection) {
+      const afterElement = activeSection.querySelector('::after');
+      if (afterElement) {
+        afterElement.style.animation = 'sectionScan 1.5s ease-in-out';
+      }
+    }
+  });
 </script>
 
 </body>
