@@ -21,6 +21,24 @@
     user-select: none;
   }
 
+  /* Animación flotante para iconos */
+  @keyframes float {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-8px) rotate(5deg);
+    }
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+  }
+
+  .nav-item.active .nav-icon {
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 231, 0.7));
+  }
+
   /* Fondo interactivo con partículas */
   #backgroundCanvas {
     position: fixed;
