@@ -113,13 +113,182 @@
   }
 
   /* Contenido */
-  main.content {
+  .content {
     flex: 1;
-    padding: 1rem 3rem;
-    perspective: 800px;
-    height: 100vh;
-    box-sizing: border-box;
     overflow: hidden;
+    position: relative;
+    height: 100vh;
+  }
+
+  .section {
+    height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+
+  #about {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .about-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  #about1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #00ffe7;
+    box-shadow: 0 0 20px rgba(0, 255, 231, 0.3);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 800px;
+  }
+
+  .about2-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .about2-card {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+  .about2-card h3 {
+    color: #00ffe7;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .about2-card p {
+    color: #fff;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    text-align: justify;
+  }
+
+  .about2-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .about2-card li {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .about2-card .small-icon {
+    font-size: 1.2rem;
+    color: #00ffe7;
+    flex-shrink: 0;
+  }
+
+  .nav-dots {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 1000;
+  }
+
+  .nav-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(0, 255, 231, 0.2);
+    border: 2px solid #00ffe7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .nav-dot.active {
+    background: #00ffe7;
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(0, 255, 231, 0.5);
+  }
+
+  .nav-dot:hover {
+    background: #00ffe7;
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(0, 255, 231, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 1rem;
+    }
+
+    .about2-card {
+      padding: 1.5rem;
+    }
+
+    .about2-card ul {
+      grid-template-columns: 1fr;
+    }
+
+    .about2-card h3 {
+      font-size: 1.5rem;
+    }
+
+    .about2-card p {
+      font-size: 1rem;
+    }
+
+    .profile-image {
+      width: 150px;
+      height: 150px;
+    }
+
+    .nav-dots {
+      right: 1rem;
+    }
   }
 
   /* Animación de barrido para secciones */
@@ -285,23 +454,6 @@
     .skill-category {
       height: auto;
     }
-  }
-
-  /* Estilos para la imagen de perfil */
-  .profile-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 2rem 0;
-    border: 3px solid #00ffe7;
-    box-shadow: 0 0 20px rgba(0, 255, 231, 0.3);
-    transition: all 0.3s ease;
-  }
-
-  .profile-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(0, 255, 231, 0.5);
   }
 
   /* Estilos para las tarjetas de proyectos */
@@ -691,6 +843,114 @@
     gap: 2rem;
     margin-top: 1rem;
   }
+
+  @keyframes textReveal {
+    0% {
+      transform: translateY(20px) scale(0.8);
+      opacity: 0;
+      filter: blur(10px);
+    }
+    50% {
+      transform: translateY(-5px) scale(1.1);
+      opacity: 1;
+      filter: blur(0);
+    }
+    100% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  .wave-text {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #00ffe7;
+    animation: typing 3s steps(69) 1,
+               blink 0.7s step-end infinite,
+               glow 2s ease-in-out infinite;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+  }
+
+  .wave-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      rgba(0, 255, 231, 0.1) 50%,
+      transparent 100%);
+    transform: translateX(-100%);
+    animation: shine 2s ease-in-out 1;
+  }
+
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .wave-text span {
+    display: inline;
+    opacity: 0;
+    animation: fadeIn 0.1s forwards;
+    animation-delay: calc(0.05s * var(--i));
+    margin: 0 0.5px;
+  }
+
+  .wave-text span.space {
+    margin: 0 4px;
+  }
+
+  .wave-text span.capital {
+    font-weight: 600;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      text-shadow: 0 0 5px rgba(0, 255, 231, 0.5);
+    }
+    50% {
+      text-shadow: 0 0 20px rgba(0, 255, 231, 0.8),
+                   0 0 30px rgba(0, 255, 231, 0.6),
+                   0 0 40px rgba(0, 255, 231, 0.4);
+    }
+  }
 </style>
 </head>
 <body>
@@ -718,13 +978,115 @@
   </nav>
 
   <main class="content" role="main">
-    <section id="about" class="section active" tabindex="0" aria-label="Sobre mí">
-      <img src="assets/foto.jpg" alt="Foto de perfil de Andrés" class="profile-image">
-      <div class="section-header">
-        <h1>
-          <span class="greeting">¡Hola! </span>, soy <span class="name">Andrés</span>
-        </h1>
-        <p>Desarrollador Full Stack apasionado por crear experiencias web únicas</p>
+    <section id="about" class="section" tabindex="0" aria-label="Sobre mí">
+      <div class="nav-dots" id="aboutDots"></div>
+      <div class="about-container active" id="about1">
+        <img src="assets/foto.jpg" alt="Foto de perfil de Andrés" class="profile-image">
+        <div class="section-header">
+          <h1>
+            <span class="greeting">¡Hola!</span>
+            <span class="name">Andrés</span>
+          </h1>
+          <p class="wave-text">
+            <span class="capital" style="--i:1">D</span>
+            <span style="--i:2">e</span>
+            <span style="--i:3">s</span>
+            <span style="--i:4">a</span>
+            <span style="--i:5">r</span>
+            <span style="--i:6">r</span>
+            <span style="--i:7">o</span>
+            <span style="--i:8">l</span>
+            <span style="--i:9">l</span>
+            <span style="--i:10">a</span>
+            <span style="--i:11">d</span>
+            <span style="--i:12">o</span>
+            <span style="--i:13">r</span>
+            <span class="space" style="--i:14"> </span>
+            <span class="capital" style="--i:15">F</span>
+            <span style="--i:16">u</span>
+            <span style="--i:17">l</span>
+            <span style="--i:18">l</span>
+            <span class="space" style="--i:19"> </span>
+            <span class="capital" style="--i:20">S</span>
+            <span style="--i:21">t</span>
+            <span style="--i:22">a</span>
+            <span style="--i:23">c</span>
+            <span style="--i:24">k</span>
+            <span class="space" style="--i:25"> </span>
+            <span style="--i:26">a</span>
+            <span style="--i:27">p</span>
+            <span style="--i:28">a</span>
+            <span style="--i:29">s</span>
+            <span style="--i:30">i</span>
+            <span style="--i:31">o</span>
+            <span style="--i:32">n</span>
+            <span style="--i:33">a</span>
+            <span style="--i:34">d</span>
+            <span style="--i:35">o</span>
+            <span class="space" style="--i:36"> </span>
+            <span style="--i:37">p</span>
+            <span style="--i:38">o</span>
+            <span style="--i:39">r</span>
+            <span class="space" style="--i:40"> </span>
+            <span style="--i:41">c</span>
+            <span style="--i:42">r</span>
+            <span style="--i:43">e</span>
+            <span style="--i:44">a</span>
+            <span style="--i:45">r</span>
+            <span class="space" style="--i:46"> </span>
+            <span style="--i:47">e</span>
+            <span style="--i:48">x</span>
+            <span style="--i:49">p</span>
+            <span style="--i:50">e</span>
+            <span style="--i:51">r</span>
+            <span style="--i:52">i</span>
+            <span style="--i:53">e</span>
+            <span style="--i:54">n</span>
+            <span style="--i:55">c</span>
+            <span style="--i:56">i</span>
+            <span style="--i:57">a</span>
+            <span style="--i:58">s</span>
+            <span class="space" style="--i:59"> </span>
+            <span style="--i:60">w</span>
+            <span style="--i:61">e</span>
+            <span style="--i:62">b</span>
+            <span class="space" style="--i:63"> </span>
+            <span style="--i:64">ú</span>
+            <span style="--i:65">n</span>
+            <span style="--i:66">i</span>
+            <span style="--i:67">c</span>
+            <span style="--i:68">a</span>
+            <span style="--i:69">s</span>
+          </p>
+        </div>
+      </div>
+      <div class="about-container next" id="about2">
+        <div class="about2-container">
+          <div class="about2-card">
+            <h3><i class="fas fa-user-astronaut"></i> Mi Historia</h3>
+            <p>Como desarrollador Full Stack, mi viaje comenzó con una curiosidad insaciable por la tecnología y el diseño. A lo largo de los años, he perfeccionado mis habilidades para crear experiencias web que no solo son visualmente atractivas, sino también funcionales y accesibles.</p>
+            <ul>
+              <li><i class="fas fa-check-circle small-icon"></i> Más de 5 años de experiencia en desarrollo web</li>
+              <li><i class="fas fa-check-circle small-icon"></i> Especializado en React, Node.js y diseño UI/UX</li>
+              <li><i class="fas fa-check-circle small-icon"></i> Apasionado por la innovación y las nuevas tecnologías</li>
+              <li><i class="fas fa-check-circle small-icon"></i> Comprometido con la creación de soluciones escalables</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="about-container next" id="about3">
+        <div class="about2-container">
+          <div class="about2-card">
+            <h3><i class="fas fa-lightbulb"></i> Mi Enfoque</h3>
+            <p>Creo en la combinación perfecta entre diseño y funcionalidad. Cada proyecto es una oportunidad para innovar y crear algo único que resuelva problemas reales y mejore la experiencia del usuario.</p>
+            <ul>
+              <li><i class="fas fa-star small-icon"></i> Diseño centrado en el usuario</li>
+              <li><i class="fas fa-star small-icon"></i> Código limpio y mantenible</li>
+              <li><i class="fas fa-star small-icon"></i> Optimización y rendimiento</li>
+              <li><i class="fas fa-star small-icon"></i> Soluciones creativas y eficientes</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
     <section id="projects" class="section" tabindex="0" aria-label="Proyectos">
@@ -1105,6 +1467,45 @@
       }
     }
   });
+
+  // Navegación entre contenedores de About
+  const aboutContainers = document.querySelectorAll('.about-container');
+  const aboutDots = document.getElementById('aboutDots');
+  let currentIndex = 0;
+
+  // Crear dots de navegación
+  aboutContainers.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.className = 'nav-dot' + (index === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goToSlide(index));
+    aboutDots.appendChild(dot);
+  });
+
+  function updateSlides() {
+    aboutContainers.forEach((container, index) => {
+      container.className = 'about-container';
+      if (index === currentIndex) {
+        container.classList.add('active');
+      } else if (index > currentIndex) {
+        container.classList.add('next');
+      } else {
+        container.classList.add('prev');
+      }
+    });
+
+    // Actualizar dots
+    document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+
+  function goToSlide(index) {
+    currentIndex = index;
+    updateSlides();
+  }
+
+  // Inicializar
+  updateSlides();
 </script>
 
 </body>
