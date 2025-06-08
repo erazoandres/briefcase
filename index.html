@@ -191,13 +191,19 @@
 
   .about2-container {
     width: 100%;
-    height: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 0 2rem;
+  }
+
+  #about4 .about2-container {
+    max-width: 1400px;
+    padding: 0 3rem;
+  }
+
+  #about4 .about2-card {
+    max-width: 100%;
+    padding: 2.5rem;
   }
 
   .about2-card {
@@ -1029,6 +1035,91 @@
     border-color: rgba(0, 255, 0, 0.3);
     color: #00ff00;
   }
+
+  .education-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .education-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 231, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .education-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 255, 231, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 255, 231, 0.1);
+  }
+
+  .education-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 255, 231, 0.1);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    color: #00ffe7;
+    flex-shrink: 0;
+  }
+
+  .education-content {
+    flex: 1;
+  }
+
+  .education-content h4 {
+    color: #00ffe7;
+    margin: 0 0 0.3rem 0;
+    font-size: 1.1rem;
+  }
+
+  .education-content p {
+    color: #fff;
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+
+  .education-year {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #00ffe7;
+    background: rgba(0, 255, 231, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 1200px) {
+    .education-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    #about4 .about2-container {
+      padding: 0 1.5rem;
+    }
+
+    #about4 .about2-card {
+      padding: 1.5rem;
+    }
+
+    .education-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
 </style>
 </head>
 <body>
@@ -1158,11 +1249,84 @@
             <h3><i class="fas fa-lightbulb"></i> Mi Enfoque</h3>
             <p>Creo en la combinación perfecta entre diseño y funcionalidad. Cada proyecto es una oportunidad para innovar y crear algo único que resuelva problemas reales y mejore la experiencia del usuario.</p>
             <ul>
-              <li><i class="fas fa-star small-icon"></i> Diseño centrado en el usuario</li>
-              <li><i class="fas fa-star small-icon"></i> Código limpio y mantenible</li>
-              <li><i class="fas fa-star small-icon"></i> Optimización y rendimiento</li>
-              <li><i class="fas fa-star small-icon"></i> Soluciones creativas y eficientes</li>
+              <li><i class="fas fa-check small-icon"></i> Diseño centrado en el usuario</li>
+              <li><i class="fas fa-check small-icon"></i> Código limpio y mantenible</li>
+              <li><i class="fas fa-check small-icon"></i> Soluciones creativas y eficientes</li>
             </ul>
+          </div>
+        </div>
+      </div>
+      <div class="about-container next" id="about4">
+        <div class="about2-container">
+          <div class="about2-card">
+            <h3><i class="fas fa-graduation-cap"></i> Educación y Certificaciones</h3>
+            <div class="education-grid">
+              <div class="education-item">
+                <div class="education-icon">
+                  <i class="fas fa-university"></i>
+                </div>
+                <div class="education-content">
+                  <h4>Ingeniería en Sistemas</h4>
+                  <p>Universidad Tecnológica</p>
+                  <span class="education-year">2018 - 2022</span>
+                </div>
+              </div>
+
+              <div class="education-item">
+                <div class="education-icon">
+                  <i class="fas fa-certificate"></i>
+                </div>
+                <div class="education-content">
+                  <h4>Desarrollo Web Full Stack</h4>
+                  <p>Platzi</p>
+                  <span class="education-year">2023</span>
+                </div>
+              </div>
+
+              <div class="education-item">
+                <div class="education-icon">
+                  <i class="fas fa-award"></i>
+                </div>
+                <div class="education-content">
+                  <h4>React Avanzado</h4>
+                  <p>Udemy</p>
+                  <span class="education-year">2023</span>
+                </div>
+              </div>
+
+              <div class="education-item">
+                <div class="education-icon">
+                  <i class="fas fa-code"></i>
+                </div>
+                <div class="education-content">
+                  <h4>Node.js y Express</h4>
+                  <p>Coursera</p>
+                  <span class="education-year">2023</span>
+                </div>
+              </div>
+
+              <div class="education-item">
+                <div class="education-icon">
+                  <i class="fas fa-database"></i>
+                </div>
+                <div class="education-content">
+                  <h4>MongoDB y Bases de Datos</h4>
+                  <p>MongoDB University</p>
+                  <span class="education-year">2023</span>
+                </div>
+              </div>
+
+              <div class="education-item">
+                <div class="education-icon">
+                  <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="education-content">
+                  <h4>Desarrollo Móvil con React Native</h4>
+                  <p>Udemy</p>
+                  <span class="education-year">2023</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
