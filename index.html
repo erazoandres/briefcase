@@ -1609,6 +1609,29 @@
     color: #00ffe7;
     margin-left: 1px;
   }
+
+  .copy-message {
+    position: absolute;
+    background: rgba(0, 255, 231, 0.2);
+    color: #00ffe7;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    top: -25px;
+    right: 0;
+    transform: translateY(-5px);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 255, 231, 0.3);
+    white-space: nowrap;
+  }
+
+  .copy-message.show {
+    opacity: 1;
+    visibility: visible;
+  }
 </style>
 </head>
 <body>
@@ -1979,14 +2002,15 @@
             <span>Instagram</span>
           </a>
 
-          <a href="mailto:andres@example.com" class="contact-link">
+          <a href="mailto:erazoandres14@gmail.com" class="contact-link">
             <div class="contact-link-content">
               <i class="fas fa-envelope"></i>
               <span>andres@example.com</span>
             </div>
-            <button class="copy-email-btn" onclick="copyEmail(event)" title="Copiar email">
-              📋
+            <button class="copy-email-btn" aria-label="Copiar email">
+              <i class="fas fa-copy"></i>
             </button>
+            <div class="copy-message">¡Copiado!</div>
           </a>
         </div>
 
@@ -2536,6 +2560,75 @@
         this.classList.add('active');
       });
     }
+  });
+
+  // Función para copiar email
+  document.querySelector('.copy-email-btn').addEventListener('click', function() {
+    const email = 'erazoandres14@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
+      const message = this.parentElement.querySelector('.copy-message');
+      message.classList.add('show');
+      
+      // Remover la clase después de 2 segundos
+      setTimeout(() => {
+        message.classList.remove('show');
+      }, 2000);
+    });
+  });
+
+  // Función para manejar la navegación con los puntos
+  function handleDotNavigation(targetId) {
+    // Remover clase active de todas las secciones
+    document.querySelectorAll('.section').forEach(section => {
+      section.classList.remove('active');
+    });
+
+    // Remover clase active de todos los puntos
+    document.querySelectorAll('.nav-dot').forEach(dot => {
+      dot.classList.remove('active');
+    });
+
+    // Activar la sección objetivo
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      targetSection.classList.add('active');
+      // Activar el punto correspondiente
+      const correspondingDot = document.querySelector(`.nav-dot[data-target="${targetId}"]`);
+      if (correspondingDot) {
+        correspondingDot.classList.add('active');
+      }
+    }
+  }
+
+  // Agregar event listeners a los puntos de navegación
+  document.querySelectorAll('.nav-dot').forEach(dot => {
+    dot.addEventListener('click', function() {
+      const targetId = this.getAttribute('data-target');
+      handleDotNavigation(targetId);
+    });
+  });
+
+  // Observador de intersección para actualizar los puntos activos
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sectionId = entry.target.id;
+        handleDotNavigation(sectionId);
+      }
+    });
+  }, {
+    threshold: 0.5
+  });
+
+  // Observar todas las secciones
+  document.querySelectorAll('.section').forEach(section => {
+    observer.observe(section);
+  });
+
+  // Inicializar la navegación al cargar la página
+  document.addEventListener('DOMContentLoaded', function() {
+    // Activar la primera sección por defecto
+    handleDotNavigation('about');
   });
 </script>
 
