@@ -1634,6 +1634,109 @@
     opacity: 1;
     visibility: visible;
   }
+
+  /* Estilos del carrusel */
+  .carousel-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 231, 0.1);
+  }
+
+  .carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .carousel-slide img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 2px solid rgba(0, 255, 231, 0.3);
+    box-shadow: 0 0 20px rgba(0, 255, 231, 0.2);
+  }
+
+  .carousel-slide h4 {
+    color: #00ffe7;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+  }
+
+  .carousel-slide p {
+    color: #eaeaea;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .carousel-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-dot.active {
+    background: #00ffe7;
+    transform: scale(1.2);
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 255, 231, 0.1);
+    border: none;
+    color: #00ffe7;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-arrow:hover {
+    background: rgba(0, 255, 231, 0.2);
+  }
+
+  .carousel-prev {
+    left: 10px;
+  }
+
+  .carousel-next {
+    right: 10px;
+  }
 </style>
 </head>
 <body>
@@ -1783,12 +1886,38 @@
         <div class="about2-container">
           <div class="about2-card">
             <h3><i class="fas fa-trophy"></i> Logros y Reconocimientos</h3>
-            <ul>
-              <li><i class="fas fa-medal small-icon"></i> Primer lugar en Hackathon de Innovación Tecnológica 2023</li>
-              <li><i class="fas fa-award small-icon"></i> Certificación en Desarrollo Web Avanzado</li>
-              <li><i class="fas fa-star small-icon"></i> Reconocimiento por Excelencia en Desarrollo de Software</li>
-              <li><i class="fas fa-certificate small-icon"></i> Participación destacada en Conferencias de Tecnología</li>
-            </ul>
+            <div class="carousel-container">
+              <div class="carousel">
+                <div class="carousel-slide">
+                  <img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?w=500&auto=format&fit=crop&q=60" alt="Hackathon">
+                  <h4><i class="fas fa-medal"></i> Finalista Hackathon 2023</h4>
+                  <p>Tercer lugar en Hackathon de Innovación Tecnológica Ambiental DATIC 2023</p>
+                </div>
+
+                <div class="carousel-slide">
+                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format&fit=crop&q=60" alt="Excelencia">
+                  <h4><i class="fas fa-star"></i> Docencia</h4>
+                  <p>Profesor desarrollo de Software en Kodland desde 2023</p>
+                </div>
+                <div class="carousel-slide">
+                  <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&auto=format&fit=crop&q=60" alt="Conferencias">
+                  <h4><i class="fas fa-certificate"></i> Panelista Invitado</h4>
+                  <p>Participación Panelista Hackathon CIADET 2023</p>
+                </div>
+              </div>
+              <button class="carousel-arrow carousel-prev">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="carousel-arrow carousel-next">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="carousel-controls">
+                <div class="carousel-dot active"></div>
+                <div class="carousel-dot"></div>
+                <div class="carousel-dot"></div>
+                <div class="carousel-dot"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2727,6 +2856,47 @@
   document.addEventListener('DOMContentLoaded', function() {
     // Activar la primera sección por defecto
     handleDotNavigation('about');
+  });
+
+  // Código del carrusel
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.carousel');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    let currentSlide = 0;
+
+    function updateCarousel() {
+      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    // Event listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentSlide = index;
+        updateCarousel();
+      });
+    });
+
+    // Auto-avance cada 5 segundos
+    setInterval(nextSlide, 5000);
   });
 </script>
 
