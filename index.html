@@ -1467,94 +1467,52 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(15, 15, 24, 0.95);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.9);
     z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
   }
 
   .modal.active {
     display: flex;
-    opacity: 1;
   }
 
   .modal-content {
+    max-width: 90%;
+    max-height: 90vh;
     position: relative;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(0, 255, 231, 0.2);
-    border-radius: 15px;
-    padding: 2rem;
-    width: 90%;
-    max-width: 500px;
-    margin: auto;
-    text-align: center;
-    transform: translateY(-20px);
-    transition: transform 0.3s ease;
-    box-shadow: 
-      0 0 20px rgba(0, 255, 231, 0.1),
-      0 0 40px rgba(0, 255, 231, 0.05);
   }
 
-  .modal.active .modal-content {
-    transform: translateY(0);
+  .modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 255, 231, 0.3);
   }
 
   .modal-close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
+    top: -40px;
+    right: 0;
     color: #00ffe7;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
     transition: all 0.3s ease;
   }
 
   .modal-close:hover {
-    background: rgba(0, 255, 231, 0.1);
-    transform: rotate(90deg);
+    transform: scale(1.1);
+    color: #fff;
   }
 
-  .modal-icon {
-    font-size: 3rem;
-    color: #00ffe7;
-    margin-bottom: 1rem;
-    animation: float 3s ease-in-out infinite;
+  .carousel-slide img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
   }
 
-  .modal h3 {
-    color: #ffffff;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .modal p {
-    color: #cdeffb;
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
-  }
-
-  .modal-subtext {
-    color: #8df9ff;
-    font-size: 0.9rem;
-    margin-top: 1rem;
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+  .carousel-slide img:hover {
+    transform: scale(1.05);
   }
 
   #text-skills.wave-text {
@@ -2189,6 +2147,14 @@
     <h3>¡Mensaje Enviado!</h3>
     <p>Tu mensaje ha sido enviado exitosamente. Una copia ha sido enviada a tu correo electrónico.</p>
     <p class="modal-subtext">Nos pondremos en contacto contigo pronto.</p>
+  </div>
+</div>
+
+<!-- Modal para imágenes -->
+<div class="modal" id="imageModal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <img src="" alt="Imagen ampliada" id="modalImage">
   </div>
 </div>
 
@@ -2865,7 +2831,37 @@
     const dots = document.querySelectorAll('.carousel-dot');
     const prevBtn = document.querySelector('.carousel-prev');
     const nextBtn = document.querySelector('.carousel-next');
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalClose = document.querySelector('.modal-close');
     let currentSlide = 0;
+
+    // Funcionalidad del modal
+    slides.forEach(slide => {
+      const img = slide.querySelector('img');
+      img.addEventListener('click', () => {
+        modal.classList.add('active');
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+
+    // Cerrar modal con tecla ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+      }
+    });
 
     function updateCarousel() {
       carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
