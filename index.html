@@ -1467,11 +1467,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.85);
     z-index: 1000;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(5px);
   }
 
   .modal.active {
@@ -1479,40 +1479,48 @@
   }
 
   .modal-content {
-    max-width: 90%;
-    max-height: 90vh;
+    max-width: 85%;
+    max-height: 85vh;
     position: relative;
   }
 
   .modal-content img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 255, 231, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 231, 0.2);
   }
 
   .modal-close {
     position: absolute;
-    top: -40px;
-    right: 0;
-    color: #00ffe7;
-    font-size: 2rem;
+    top: -35px;
+    right: -35px;
+    color: #fff;
+    font-size: 1.8rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
   }
 
   .modal-close:hover {
-    transform: scale(1.1);
-    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
   }
 
   .carousel-slide img {
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
   }
 
   .carousel-slide img:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 
   #text-skills.wave-text {
@@ -2153,7 +2161,7 @@
 <!-- Modal para imágenes -->
 <div class="modal" id="imageModal">
   <div class="modal-content">
-    <span class="modal-close">&times;</span>
+    <div class="modal-close" id="modalClose">&times;</div>
     <img src="" alt="Imagen ampliada" id="modalImage">
   </div>
 </div>
@@ -2833,8 +2841,9 @@
     const nextBtn = document.querySelector('.carousel-next');
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
-    const modalClose = document.querySelector('.modal-close');
+    const modalClose = document.getElementById('modalClose');
     let currentSlide = 0;
+    let carouselInterval;
 
     // Funcionalidad del modal
     slides.forEach(slide => {
@@ -2843,16 +2852,24 @@
         modal.classList.add('active');
         modalImg.src = img.src;
         modalImg.alt = img.alt;
+        document.body.style.overflow = 'hidden';
       });
     });
 
-    modalClose.addEventListener('click', () => {
-      modal.classList.remove('active');
-    });
+    // Cerrar modal con el botón X
+    if (modalClose) {
+      modalClose.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
 
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         modal.classList.remove('active');
+        document.body.style.overflow = '';
       }
     });
 
@@ -2860,6 +2877,7 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('active')) {
         modal.classList.remove('active');
+        document.body.style.overflow = '';
       }
     });
 
@@ -2891,8 +2909,22 @@
       });
     });
 
-    // Auto-avance cada 5 segundos
-    setInterval(nextSlide, 5000);
+    // Función para iniciar el auto-avance
+    function startCarousel() {
+      carouselInterval = setInterval(nextSlide, 5000);
+    }
+
+    // Función para detener el auto-avance
+    function stopCarousel() {
+      clearInterval(carouselInterval);
+    }
+
+    // Pausar el carrusel cuando el mouse está sobre él
+    carousel.addEventListener('mouseenter', stopCarousel);
+    carousel.addEventListener('mouseleave', startCarousel);
+
+    // Iniciar el carrusel
+    startCarousel();
   });
 </script>
 
