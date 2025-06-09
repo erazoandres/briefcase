@@ -1468,6 +1468,282 @@
     left: 0;
     width: 100%;
     height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+  }
+
+  .modal.active {
+    display: flex;
+  }
+
+  .modal-content {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 231, 0.2);
+    border-radius: 10px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 255, 231, 0.1);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #00ffe7;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  .modal-close:hover {
+    background: rgba(0, 255, 231, 0.1);
+    transform: rotate(90deg);
+  }
+
+  .modal-icon {
+    font-size: 2.5rem;
+    color: #00ffe7;
+    margin-bottom: 1rem;
+  }
+
+  .modal h3 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .modal p {
+    color: #cdeffb;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .modal-subtext {
+    color: #8df9ff;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+
+  .carousel-slide img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .carousel-slide img:hover {
+    transform: scale(1.03);
+  }
+
+  #text-skills.wave-text {
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    color: #cdeffb;
+    position: relative;
+    display: inline-block;
+  }
+
+  #text-skills.wave-text .line {
+    position: relative;
+    display: inline-block;
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing-skills 4s steps(99) forwards;
+  }
+
+  @keyframes typing-skills {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  #text-skills.wave-text .line::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: #00ffe7;
+    animation: blink 0.7s step-end infinite;
+  }
+
+  .typewriter-container {
+    margin: 1rem 0;
+    min-height: 2em;
+  }
+
+  .typewriter-text {
+    font-size: 1.1rem;
+    color: #cdeffb;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+  }
+
+  .typewriter-text::after {
+    content: '|';
+    position: absolute;
+    right: -2px;
+    animation: blink 0.7s step-end infinite;
+    color: #00ffe7;
+    margin-left: 1px;
+  }
+
+  .copy-message {
+    position: absolute;
+    background: rgba(0, 255, 231, 0.2);
+    color: #00ffe7;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    top: -25px;
+    right: 0;
+    transform: translateY(-5px);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 255, 231, 0.3);
+    white-space: nowrap;
+  }
+
+  .copy-message.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Estilos del carrusel */
+  .carousel-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 231, 0.1);
+  }
+
+  .carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .carousel-slide img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 2px solid rgba(0, 255, 231, 0.3);
+    box-shadow: 0 0 20px rgba(0, 255, 231, 0.2);
+  }
+
+  /* Estilo específico para la imagen de clases */
+  .carousel-slide:nth-child(2) img {
+    object-position: left top;
+  }
+
+  .carousel-slide h4 {
+    color: #00ffe7;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .carousel-slide p {
+    color: #eaeaea;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .carousel-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-dot.active {
+    background: #00ffe7;
+    transform: scale(1.2);
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 255, 231, 0.1);
+    border: none;
+    color: #00ffe7;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-arrow:hover {
+    background: rgba(0, 255, 231, 0.2);
+  }
+
+  .carousel-prev {
+    left: 10px;
+  }
+
+  .carousel-next {
+    right: 10px;
+  }
+
+  /* Estilos del modal de imágenes */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(15, 15, 24, 0.95);
     backdrop-filter: blur(8px);
     z-index: 1000;
@@ -2154,11 +2430,11 @@
       
       <div class="contact-container">
         <div class="social-links">
-          <a href="https://github.com/tuusuario" target="_blank" class="social-link">
+          <a href="https://github.com/erazoandres" target="_blank" class="social-link">
             <span class="social-icon">📦</span>
             <span>GitHub</span>
           </a>
-          <a href="https://linkedin.com/in/tuusuario" target="_blank" class="social-link">
+          <a href="https://www.linkedin.com/in/erazoandres1408/" target="_blank" class="social-link">
             <span class="social-icon">💼</span>
             <span>LinkedIn</span>
           </a>
