@@ -171,18 +171,24 @@
               <div class="carousel-container">
                 <div class="carousel">
                   <div class="carousel-slide">
-                    <img src="assets/hackaton.jpg" alt="Hackathon">
+                    <img
+                      src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2000&auto=format&fit=crop"
+                      alt="Hackathon">
                     <h4><i class="fas fa-medal"></i> Finalista Hackathon 2023</h4>
                     <p>Tercer lugar en Hackathon de Innovación Tecnológica Ambiental DATIC Cali 2023</p>
                   </div>
 
                   <div class="carousel-slide">
-                    <img src="assets/clases.png" alt="Excelencia">
+                    <img
+                      src="https://images.unsplash.com/photo-1524178232363-1fb28f74b0cd?q=80&w=2000&auto=format&fit=crop"
+                      alt="Excelencia">
                     <h4><i class="fas fa-star"></i> Docencia</h4>
                     <p>Profesor de desarrollo de Software en Kodland desde 2023</p>
                   </div>
                   <div class="carousel-slide">
-                    <img src="assets/panel.png" alt="Conferencias">
+                    <img
+                      src="https://images.unsplash.com/photo-1475721027185-403422bb944c?q=80&w=2000&auto=format&fit=crop"
+                      alt="Conferencias">
                     <h4><i class="fas fa-certificate"></i> Panelista Invitado</h4>
                     <p>Participación como Panelista en Hackathon CIADET Cali 2023</p>
                   </div>
@@ -214,7 +220,8 @@
             data-description="Centro de control integral para la automatización de reportes y gestión de sesiones digitales. Este ecosistema incluye LogicLedger para el análisis profundo de registros de pagos y AuditStudio para el registro eficiente de grupos y visualización de métricas de ganancias mensuales."
             data-tech="HTML5, CSS3, JavaScript, JSON, LocalStorage"
             data-links='[{"label": "🌐 Demo", "url": "https://erazoandres.github.io/Audit-Studio/index.html"}, {"label": "📦 GitHub", "url": "https://github.com/erazoandres/Audit-Studio"}]'
-            data-image="assets/panel.png">
+            data-image="assets/nexus.png">
+            <img src="assets/nexus.png" alt="Audit Studio Preview" class="project-card-image">
             <h3 class="project-title">Audit Studio</h3>
             <p class="project-description">Centro de control para la gestión de grupos y análisis de pagos.
               Automatización de reportes y gestión de sesiones digitales.</p>
@@ -234,7 +241,9 @@
             data-description="Una aplicación de notas segura que utiliza conceptos de encriptación avanzada para proteger la privacidad del usuario. Ofrece una interfaz minimalista, sincronización automática en la nube y organización inteligente mediante etiquetas."
             data-tech="React, Firebase, Web Crypto API, Tailwind CSS"
             data-links='[{"label": "🌐 Demo", "url": "#"}, {"label": "📦 GitHub", "url": "#"}]'
-            data-image="assets/clases.png">
+            data-image="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=2000&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=2000&auto=format&fit=crop"
+              alt="Quantum Notes Preview" class="project-card-image">
             <h3 class="project-title">Quantum Notes</h3>
             <p class="project-description">Aplicación de notas con encriptación avanzada, interfaz minimalista y
               sincronización en tiempo real.</p>
@@ -253,7 +262,9 @@
             data-description="Experimenta con la intersección entre IA y creatividad. Neural Art permite a los usuarios generar composiciones artísticas únicas utilizando modelos de redes neuronales directamente en el navegador."
             data-tech="TensorFlow.js, Canvas API, Web Workers, CSS Grid"
             data-links='[{"label": "🌐 Demo", "url": "#"}, {"label": "📦 GitHub", "url": "#"}]'
-            data-image="assets/hackaton.jpg">
+            data-image="https://images.unsplash.com/photo-1675557009875-436f297b3a5b?q=80&w=2000&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1675557009875-436f297b3a5b?q=80&w=2000&auto=format&fit=crop"
+              alt="Neural Art Preview" class="project-card-image">
             <h3 class="project-title">Neural Art</h3>
             <p class="project-description">Plataforma de generación de arte usando inteligencia artificial con estilos
               personalizables.</p>
@@ -273,8 +284,7 @@
             data-tech="Node.js, Express, MongoDB, Google Maps API"
             data-links='[{"label": "🔒 Proyecto Privado", "url": "#", "disabled": true}, {"label": "📦 Source Privado", "url": "#", "disabled": true}]'
             data-image="assets/pidevalle.png">
-            <img src="assets/pidevalle.png" alt="PideValle Preview" class="project-card-image"
-              style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem; border: 1px solid rgba(0, 255, 231, 0.2);">
+            <img src="assets/pidevalle.png" alt="PideValle Preview" class="project-card-image">
             <h3 class="project-title">PideValle</h3>
             <p class="project-description">Plataforma integral de pedidos locales (Delivery) diseñada para conectar
               clientes, negocios y repartidores en un ecosistema eficiente.</p>
@@ -508,7 +518,7 @@
   <!-- Modal para Detalles de Proyecto -->
   <div class="modal" id="projectDetailModal">
     <div class="modal-content project-detail-content">
-      <button class="modal-close" id="projectModalClose">×</button>
+      <button class="modal-close" id="projectModalClose" aria-label="Cerrar modal">×</button>
       <div class="project-detail-body">
         <div class="project-detail-image-container">
           <img src="" alt="Project Detail" id="projectDetailImage">
@@ -516,7 +526,10 @@
         <div class="project-detail-info">
           <h2 id="projectDetailTitle"></h2>
           <div class="project-detail-tags" id="projectDetailTags"></div>
-          <p id="projectDetailDescription"></p>
+          <div class="project-detail-description-container">
+            <h3>Sobre el Proyecto</h3>
+            <p id="projectDetailDescription"></p>
+          </div>
           <div class="project-detail-links" id="projectDetailLinks"></div>
         </div>
       </div>
