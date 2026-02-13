@@ -210,11 +210,14 @@
 
         <div class="projects-grid">
           <h1>Proyectos Destacados</h1>
-          <div class="project-card">
+          <div class="project-card" data-title="Audit Studio"
+            data-description="Centro de control integral para la automatización de reportes y gestión de sesiones digitales. Este ecosistema incluye LogicLedger para el análisis profundo de registros de pagos y AuditStudio para el registro eficiente de grupos y visualización de métricas de ganancias mensuales."
+            data-tech="HTML5, CSS3, JavaScript, JSON, LocalStorage"
+            data-links='[{"label": "🌐 Demo", "url": "https://erazoandres.github.io/Audit-Studio/index.html"}, {"label": "📦 GitHub", "url": "https://github.com/erazoandres/Audit-Studio"}]'
+            data-image="assets/panel.png">
             <h3 class="project-title">Audit Studio</h3>
-            <p class="project-description">Centro de control para la gestión de grupos y análisis de pagos. Incluye
-              LogicLedger para analizar registros de pagos y AuditStudio para registrar grupos y visualizar ganancias
-              mensuales.</p>
+            <p class="project-description">Centro de control para la gestión de grupos y análisis de pagos.
+              Automatización de reportes y gestión de sesiones digitales.</p>
             <div class="project-tech">
               <span class="tech-tag">HTML5</span>
               <span class="tech-tag">CSS3</span>
@@ -227,10 +230,14 @@
             </div>
           </div>
 
-          <div class="project-card">
+          <div class="project-card" data-title="Quantum Notes"
+            data-description="Una aplicación de notas segura que utiliza conceptos de encriptación avanzada para proteger la privacidad del usuario. Ofrece una interfaz minimalista, sincronización automática en la nube y organización inteligente mediante etiquetas."
+            data-tech="React, Firebase, Web Crypto API, Tailwind CSS"
+            data-links='[{"label": "🌐 Demo", "url": "#"}, {"label": "📦 GitHub", "url": "#"}]'
+            data-image="assets/clases.png">
             <h3 class="project-title">Quantum Notes</h3>
-            <p class="project-description">Aplicación de notas con encriptación cuántica, interfaz minimalista y
-              sincronización en tiempo real entre dispositivos.</p>
+            <p class="project-description">Aplicación de notas con encriptación avanzada, interfaz minimalista y
+              sincronización en tiempo real.</p>
             <div class="project-tech">
               <span class="tech-tag">React</span>
               <span class="tech-tag">Firebase</span>
@@ -242,10 +249,14 @@
             </div>
           </div>
 
-          <div class="project-card">
+          <div class="project-card" data-title="Neural Art"
+            data-description="Experimenta con la intersección entre IA y creatividad. Neural Art permite a los usuarios generar composiciones artísticas únicas utilizando modelos de redes neuronales directamente en el navegador."
+            data-tech="TensorFlow.js, Canvas API, Web Workers, CSS Grid"
+            data-links='[{"label": "🌐 Demo", "url": "#"}, {"label": "📦 GitHub", "url": "#"}]'
+            data-image="assets/hackaton.jpg">
             <h3 class="project-title">Neural Art</h3>
-            <p class="project-description">Plataforma de generación de arte usando inteligencia artificial, con estilos
-              personalizables y exportación en alta resolución.</p>
+            <p class="project-description">Plataforma de generación de arte usando inteligencia artificial con estilos
+              personalizables.</p>
             <div class="project-tech">
               <span class="tech-tag">TensorFlow.js</span>
               <span class="tech-tag">Canvas API</span>
@@ -257,7 +268,11 @@
             </div>
           </div>
 
-          <div class="project-card">
+          <div class="project-card" data-title="PideValle"
+            data-description="PideValle es una solución tecnológica diseñada para dinamizar la economía local. Permite a los negocios registrar su catálogo, a los clientes realizar pedidos en tiempo real y a los repartidores gestionar las entregas de manera eficiente. Todo integrado en una sola plataforma fluida y segura."
+            data-tech="Node.js, Express, MongoDB, Google Maps API"
+            data-links='[{"label": "🔒 Proyecto Privado", "url": "#", "disabled": true}, {"label": "📦 Source Privado", "url": "#", "disabled": true}]'
+            data-image="assets/pidevalle.png">
             <img src="assets/pidevalle.png" alt="PideValle Preview" class="project-card-image"
               style="width: 100%; height: 140px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem; border: 1px solid rgba(0, 255, 231, 0.2);">
             <h3 class="project-title">PideValle</h3>
@@ -487,6 +502,24 @@
     <div class="modal-content">
       <div class="modal-close" id="modalClose">&times;</div>
       <img src="" alt="Imagen ampliada" id="modalImage">
+    </div>
+  </div>
+
+  <!-- Modal para Detalles de Proyecto -->
+  <div class="modal" id="projectDetailModal">
+    <div class="modal-content project-detail-content">
+      <button class="modal-close" id="projectModalClose">×</button>
+      <div class="project-detail-body">
+        <div class="project-detail-image-container">
+          <img src="" alt="Project Detail" id="projectDetailImage">
+        </div>
+        <div class="project-detail-info">
+          <h2 id="projectDetailTitle"></h2>
+          <div class="project-detail-tags" id="projectDetailTags"></div>
+          <p id="projectDetailDescription"></p>
+          <div class="project-detail-links" id="projectDetailLinks"></div>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -759,3 +759,76 @@
     startCarousel();
   });
 
+
+  // Lógica para el Modal de Detalles de Proyecto
+  const projectCards = document.querySelectorAll('.project-card');
+  const projectDetailModal = document.getElementById('projectDetailModal');
+  const projectModalClose = document.getElementById('projectModalClose');
+  
+  if (projectDetailModal && projectModalClose) {
+    projectCards.forEach(card => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', (e) => {
+        // No abrir si se hace click en un link directamente
+        if (e.target.classList.contains('project-link') || e.target.parentElement.classList.contains('project-link')) {
+          return;
+        }
+        
+        const title = card.getAttribute('data-title');
+        const description = card.getAttribute('data-description');
+        const tech = card.getAttribute('data-tech');
+        const image = card.getAttribute('data-image');
+        const links = JSON.parse(card.getAttribute('data-links') || '[]');
+        
+        document.getElementById('projectDetailTitle').textContent = title;
+        document.getElementById('projectDetailDescription').textContent = description;
+        document.getElementById('projectDetailImage').src = image;
+        
+        // Tags
+        const tagsContainer = document.getElementById('projectDetailTags');
+        tagsContainer.innerHTML = '';
+        if (tech) {
+          tech.split(',').forEach(t => {
+            const span = document.createElement('span');
+            span.classList.add('tech-tag');
+            span.textContent = t.trim();
+            tagsContainer.appendChild(span);
+          });
+        }
+        
+        // Links
+        const linksContainer = document.getElementById('projectDetailLinks');
+        linksContainer.innerHTML = '';
+        links.forEach(link => {
+          const a = document.createElement('a');
+          a.classList.add('project-link');
+          a.href = link.url;
+          if (!link.disabled) {
+            a.target = '_blank';
+          } else {
+            a.style.opacity = '0.7';
+            a.style.cursor = 'default';
+            a.onclick = (e) => e.preventDefault();
+          }
+          a.textContent = link.label;
+          linksContainer.appendChild(a);
+        });
+        
+        projectDetailModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    
+    projectModalClose.addEventListener('click', () => {
+      projectDetailModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    
+    projectDetailModal.addEventListener('click', (e) => {
+      if (e.target === projectDetailModal) {
+        projectDetailModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
