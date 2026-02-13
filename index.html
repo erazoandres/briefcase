@@ -1,475 +1,494 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Portafolio Galáctico</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portafolio Galáctico</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div id="particles-js"></div>
+  <div id="particles-js"></div>
 
-<canvas id="backgroundCanvas"></canvas>
+  <canvas id="backgroundCanvas"></canvas>
 
-<div class="container">
-  <nav class="sidebar" aria-label="Menú de navegación">
-    <div class="nav-item active" id = 'first_elemento_navbar' data-target="about" tabindex="0" role="button" aria-pressed="true" aria-label="Sobre mí">
-      <div class="nav-icon">
-        <i class="fas fa-user-astronaut"></i>
+  <div class="container">
+    <nav class="sidebar" aria-label="Menú de navegación">
+      <div class="nav-item active" id='first_elemento_navbar' data-target="about" tabindex="0" role="button"
+        aria-pressed="true" aria-label="Sobre mí">
+        <div class="nav-icon">
+          <i class="fas fa-user-astronaut"></i>
+        </div>
+        <span>Sobre mí</span>
       </div>
-      <span>Sobre mí</span>
-    </div>
-    <div class="nav-item" data-target="projects" tabindex="0" role="button" aria-pressed="false" aria-label="Proyectos">
-      <div class="nav-icon">🚀</div>
-      <span>Proyectos</span>
-    </div>
-    <div class="nav-item" data-target="skills" tabindex="0" role="button" aria-pressed="false" aria-label="Habilidades">
-      <div class="nav-icon">⚙️</div>
-      <span>Habilidades</span>
-    </div>
-    <div class="nav-item" data-target="contact" tabindex="0" role="button" aria-pressed="false" aria-label="Contacto">
-      <div class="nav-icon">📧</div>
-      <span>Contacto</span>
-    </div>
-  </nav>
+      <div class="nav-item" data-target="projects" tabindex="0" role="button" aria-pressed="false"
+        aria-label="Proyectos">
+        <div class="nav-icon">🚀</div>
+        <span>Proyectos</span>
+      </div>
+      <div class="nav-item" data-target="skills" tabindex="0" role="button" aria-pressed="false"
+        aria-label="Habilidades">
+        <div class="nav-icon">⚙️</div>
+        <span>Habilidades</span>
+      </div>
+      <div class="nav-item" data-target="contact" tabindex="0" role="button" aria-pressed="false" aria-label="Contacto">
+        <div class="nav-icon">📧</div>
+        <span>Contacto</span>
+      </div>
+    </nav>
 
-  <main class="content" role="main">
-    <section id="about" class="section active" tabindex="0" aria-label="Sobre mí">
-      <div class="nav-dots" id="aboutDots"></div>
-      <div class="about-container active" id="about1">
-        <img src="assets/foto.jpg" alt="Foto de perfil de Andrés" class="profile-image">
-        <div class="section-header">
-          <h1>
-            <span class="greeting">¡Hola!</span>
-            <span class="name"> soy Andrés Erazo</span>
-          </h1>
-          <div class="slogan-container">
-            <p class="slogan" id="slogan-text">Soy quien te ayuda a darle vida a ese proyecto que tienes en mente, un gusto.</p>
+    <main class="content" role="main">
+      <section id="about" class="section active" tabindex="0" aria-label="Sobre mí">
+        <div class="nav-dots" id="aboutDots"></div>
+        <div class="about-container active" id="about1">
+          <img src="assets/foto.jpg" alt="Foto de perfil de Andrés" class="profile-image">
+          <div class="section-header">
+            <h1>
+              <span class="greeting">¡Hola!</span>
+              <span class="name"> soy Andrés Erazo</span>
+            </h1>
+            <div class="slogan-container">
+              <p class="slogan" id="slogan-text">Soy quien te ayuda a darle vida a ese proyecto que tienes en mente, un
+                gusto.</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="about-container next" id="about2">
-        <div class="about2-container">
-          <div class="about2-card">
-            <h3><i class="fas fa-user-astronaut"></i> Mi Historia</h3>
-            <p>Como desarrollador Full Stack, mi viaje comenzó con una curiosidad insaciable por la tecnología y el diseño. A lo largo de los años, he perfeccionado mis habilidades para crear experiencias web que no solo son visualmente atractivas, sino también funcionales y accesibles.</p>
-            <ul>
-              <li><i class="fas fa-check-circle small-icon"></i> Más de 5 años de experiencia en desarrollo web</li>
-              <li><i class="fas fa-check-circle small-icon"></i> Especializado en React, Node.js y diseño UI/UX</li>
-              <li><i class="fas fa-check-circle small-icon"></i> Apasionado por la innovación y las nuevas tecnologías</li>
-              <li><i class="fas fa-check-circle small-icon"></i> Comprometido con la creación de soluciones escalables</li>
-            </ul>
+        <div class="about-container next" id="about2">
+          <div class="about2-container">
+            <div class="about2-card">
+              <h3><i class="fas fa-user-astronaut"></i> Mi Historia</h3>
+              <p>Como desarrollador Full Stack, mi viaje comenzó con una curiosidad insaciable por la tecnología y el
+                diseño. A lo largo de los años, he perfeccionado mis habilidades para crear experiencias web que no solo
+                son visualmente atractivas, sino también funcionales y accesibles.</p>
+              <ul>
+                <li><i class="fas fa-check-circle small-icon"></i> Más de 5 años de experiencia en desarrollo web</li>
+                <li><i class="fas fa-check-circle small-icon"></i> Especializado en React, Node.js y diseño UI/UX</li>
+                <li><i class="fas fa-check-circle small-icon"></i> Apasionado por la innovación y las nuevas tecnologías
+                </li>
+                <li><i class="fas fa-check-circle small-icon"></i> Comprometido con la creación de soluciones escalables
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="about-container next" id="about3">
-        <div class="about2-container">
-          <div class="about2-card">
-            <h3><i class="fas fa-lightbulb"></i> Mi Enfoque</h3>
-            <p>Creo en la combinación perfecta entre diseño y funcionalidad. Cada proyecto es una oportunidad para innovar y crear algo único que resuelva problemas reales y mejore la experiencia del usuario.</p>
-            <ul>
-              <li><i class="fas fa-check small-icon"></i> Diseño centrado en el usuario</li>
-              <li><i class="fas fa-check small-icon"></i> Código limpio y mantenible</li>
-              <li><i class="fas fa-check small-icon"></i> Soluciones creativas y eficientes</li>
-            </ul>
+        <div class="about-container next" id="about3">
+          <div class="about2-container">
+            <div class="about2-card">
+              <h3><i class="fas fa-lightbulb"></i> Mi Enfoque</h3>
+              <p>Creo en la combinación perfecta entre diseño y funcionalidad. Cada proyecto es una oportunidad para
+                innovar y crear algo único que resuelva problemas reales y mejore la experiencia del usuario.</p>
+              <ul>
+                <li><i class="fas fa-check small-icon"></i> Diseño centrado en el usuario</li>
+                <li><i class="fas fa-check small-icon"></i> Código limpio y mantenible</li>
+                <li><i class="fas fa-check small-icon"></i> Soluciones creativas y eficientes</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="about-container next" id="about4">
-        <div class="about2-container">
-          <div class="about2-card">
-            <h3><i class="fas fa-graduation-cap"></i> Educación y Certificaciones</h3>
-            <div class="education-grid">
-              <div class="education-item">
-                <div class="education-icon">
-                  <i class="fas fa-university"></i>
+        <div class="about-container next" id="about4">
+          <div class="about2-container">
+            <div class="about2-card">
+              <h3><i class="fas fa-graduation-cap"></i> Educación y Certificaciones</h3>
+              <div class="education-grid">
+                <div class="education-item">
+                  <div class="education-icon">
+                    <i class="fas fa-university"></i>
+                  </div>
+                  <div class="education-content">
+                    <h4>Ingeniería en Sistemas y Computación</h4>
+                    <p>Universidad Javeriana Cali</p>
+                    <span class="education-year">2016 - 2018</span>
+                  </div>
                 </div>
-                <div class="education-content">
-                  <h4>Ingeniería en Sistemas y Computación</h4>
-                  <p>Universidad Javeriana Cali</p>
-                  <span class="education-year">2016 - 2018</span>
-                </div>
-              </div>
 
-              <div class="education-item">
-                <div class="education-icon">
-                  <i class="fas fa-certificate"></i>
+                <div class="education-item">
+                  <div class="education-icon">
+                    <i class="fas fa-certificate"></i>
+                  </div>
+                  <div class="education-content">
+                    <h4>Desarrollo Web Full Stack</h4>
+                    <p>Talento TECH</p>
+                    <span class="education-year">2024</span>
+                  </div>
                 </div>
-                <div class="education-content">
-                  <h4>Desarrollo Web Full Stack</h4>
-                  <p>Talento TECH</p>
-                  <span class="education-year">2024</span>
-                </div>
-              </div>
 
-              <div class="education-item">
-                <div class="education-icon">
-                  <i class="fas fa-award"></i>
+                <div class="education-item">
+                  <div class="education-icon">
+                    <i class="fas fa-award"></i>
+                  </div>
+                  <div class="education-content">
+                    <h4>Desarrollo de aplicaciones móviles Android</h4>
+                    <p>Universidad Sergio Arboleda</p>
+                    <span class="education-year">2023</span>
+                  </div>
                 </div>
-                <div class="education-content">
-                  <h4>Desarrollo de aplicaciones móviles Android</h4>
-                  <p>Universidad Sergio Arboleda</p>
-                  <span class="education-year">2023</span>
-                </div>
-              </div>
-              
-              <div class="education-item">
-                <div class="education-icon">
-                  <i class="fas fa-mobile-alt"></i>
-                </div>
-                <div class="education-content">
+
+                <div class="education-item">
+                  <div class="education-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                  </div>
+                  <div class="education-content">
                     <h4>Técnico laboral en habilidades de programación con énfasis en aplicaciones web</h4>
                     <p>Universidad Autónoma de Bucaramanga</p>
-                  <span class="education-year">2023</span>
+                    <span class="education-year">2023</span>
+                  </div>
                 </div>
-              </div>
 
-              <div class="education-item">
-                <div class="education-icon">
-                  <i class="fas fa-code"></i>
+                <div class="education-item">
+                  <div class="education-icon">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <div class="education-content">
+                    <h4>Complementaria virtual en estructura del lenguaje de programación C++</h4>
+                    <p>SENA</p>
+                    <span class="education-year">2013</span>
+                  </div>
                 </div>
-                <div class="education-content">
-                  <h4>Complementaria virtual en estructura del lenguaje de programación C++</h4>
-                  <p>SENA</p>
-                  <span class="education-year">2013</span>
-                </div>
-              </div>
 
-              <div class="education-item">
-                <div class="education-icon">
-                  <i class="fas fa-database"></i>
+                <div class="education-item">
+                  <div class="education-icon">
+                    <i class="fas fa-database"></i>
+                  </div>
+                  <div class="education-content">
+                    <h4>MongoDB y Bases de Datos</h4>
+                    <p>MongoDB University</p>
+                    <span class="education-year">2023</span>
+                  </div>
                 </div>
-                <div class="education-content">
-                  <h4>MongoDB y Bases de Datos</h4>
-                  <p>MongoDB University</p>
-                  <span class="education-year">2023</span>
-                </div>
-              </div>
 
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="about-container next" id="about5">
-        <div class="about2-container">
-          <div class="about2-card">
-            <h3><i class="fas fa-trophy"></i> Logros y Reconocimientos</h3>
-            <div class="carousel-container">
-              <div class="carousel">
-                <div class="carousel-slide">
-                  <img src="assets/hackaton.jpg" alt="Hackathon">
-                  <h4><i class="fas fa-medal"></i> Finalista Hackathon 2023</h4>
-                  <p>Tercer lugar en Hackathon de Innovación Tecnológica Ambiental DATIC Cali 2023</p>
-                </div>
+        <div class="about-container next" id="about5">
+          <div class="about2-container">
+            <div class="about2-card">
+              <h3><i class="fas fa-trophy"></i> Logros y Reconocimientos</h3>
+              <div class="carousel-container">
+                <div class="carousel">
+                  <div class="carousel-slide">
+                    <img src="assets/hackaton.jpg" alt="Hackathon">
+                    <h4><i class="fas fa-medal"></i> Finalista Hackathon 2023</h4>
+                    <p>Tercer lugar en Hackathon de Innovación Tecnológica Ambiental DATIC Cali 2023</p>
+                  </div>
 
-                <div class="carousel-slide">
-                  <img src="assets/clases.png" alt="Excelencia">
-                  <h4><i class="fas fa-star"></i> Docencia</h4>
-                  <p>Profesor de desarrollo de Software en Kodland desde 2023</p>
+                  <div class="carousel-slide">
+                    <img src="assets/clases.png" alt="Excelencia">
+                    <h4><i class="fas fa-star"></i> Docencia</h4>
+                    <p>Profesor de desarrollo de Software en Kodland desde 2023</p>
+                  </div>
+                  <div class="carousel-slide">
+                    <img src="assets/panel.png" alt="Conferencias">
+                    <h4><i class="fas fa-certificate"></i> Panelista Invitado</h4>
+                    <p>Participación como Panelista en Hackathon CIADET Cali 2023</p>
+                  </div>
                 </div>
-                <div class="carousel-slide">
-                  <img src="assets/panel.png" alt="Conferencias">
-                  <h4><i class="fas fa-certificate"></i> Panelista Invitado</h4>
-                  <p>Participación como Panelista en Hackathon CIADET Cali 2023</p>
+                <button class="carousel-arrow carousel-prev">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-arrow carousel-next">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-controls">
+                  <div class="carousel-dot active"></div>
+                  <div class="carousel-dot"></div>
+                  <div class="carousel-dot"></div>
                 </div>
               </div>
-              <button class="carousel-arrow carousel-prev">
-                <i class="fas fa-chevron-left"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="projects" class="section" tabindex="0" aria-label="Proyectos">
+        <div class="typewriter-container">
+          <p id="text-skills" class="typewriter-text"></p>
+        </div>
+
+        <div class="projects-grid">
+          <h1>Proyectos Destacados</h1>
+          <div class="project-card">
+            <h3 class="project-title">Audit Studio</h3>
+            <p class="project-description">Centro de control para la gestión de grupos y análisis de pagos. Incluye
+              LogicLedger para analizar registros de pagos y AuditStudio para registrar grupos y visualizar ganancias
+              mensuales.</p>
+            <div class="project-tech">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://erazoandres.github.io/Audit-Studio/index.html" target="_blank" class="project-link">🌐
+                Demo</a>
+              <a href="https://github.com/erazoandres/Audit-Studio" target="_blank" class="project-link">📦 GitHub</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3 class="project-title">Quantum Notes</h3>
+            <p class="project-description">Aplicación de notas con encriptación cuántica, interfaz minimalista y
+              sincronización en tiempo real entre dispositivos.</p>
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">Web Crypto</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">🌐 Demo</a>
+              <a href="#" class="project-link">📦 GitHub</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3 class="project-title">Neural Art</h3>
+            <p class="project-description">Plataforma de generación de arte usando inteligencia artificial, con estilos
+              personalizables y exportación en alta resolución.</p>
+            <div class="project-tech">
+              <span class="tech-tag">TensorFlow.js</span>
+              <span class="tech-tag">Canvas API</span>
+              <span class="tech-tag">Web Workers</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">🌐 Demo</a>
+              <a href="#" class="project-link">📦 GitHub</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3 class="project-title">Cosmic Weather</h3>
+            <p class="project-description">Aplicación de clima con visualización de datos atmosféricos en tiempo real y
+              predicciones basadas en machine learning.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Vue.js</span>
+              <span class="tech-tag">D3.js</span>
+              <span class="tech-tag">OpenWeather API</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">🌐 Demo</a>
+              <a href="#" class="project-link">📦 GitHub</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="skills" class="section" tabindex="0" aria-label="Habilidades">
+        <div class="skills-container">
+          <h1>Mis Habilidades</h1>
+          <div class="skill-category">
+            <h3 class="category-title">
+              <i class="fas fa-code"></i>
+              Frontend
+            </h3>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>React</span>
+                <span class="skill-percentage">95%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 95%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>JavaScript</span>
+                <span class="skill-percentage">90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>HTML/CSS</span>
+                <span class="skill-percentage">85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="category-title">
+              <i class="fas fa-server"></i>
+              Backend
+            </h3>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Node.js</span>
+                <span class="skill-percentage">92%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 92%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Python</span>
+                <span class="skill-percentage">88%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 88%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>SQL</span>
+                <span class="skill-percentage">85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="category-title">
+              <i class="fas fa-paint-brush"></i>
+              Design
+            </h3>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>UI/UX</span>
+                <span class="skill-percentage">93%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 93%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Figma</span>
+                <span class="skill-percentage">90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Photoshop</span>
+                <span class="skill-percentage">85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="category-title">
+              <i class="fas fa-tools"></i>
+              Tools
+            </h3>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Git</span>
+                <span class="skill-percentage">95%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 95%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Docker</span>
+                <span class="skill-percentage">88%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 88%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>AWS</span>
+                <span class="skill-percentage">85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="section" tabindex="0" aria-label="Contacto">
+        <h1>Contacto</h1>
+        <p id="text-skill3">¿Tienes un proyecto en mente? ¡Hablemos! Estoy disponible para colaboraciones y
+          oportunidades.</p>
+
+        <div class="contact-container">
+          <div class="social-links">
+            <a href="https://github.com/erazoandres" target="_blank" class="social-link">
+              <span class="social-icon">📦</span>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/erazoandres1408/" target="_blank" class="social-link">
+              <span class="social-icon">💼</span>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://instagram.com/tuusuario" target="_blank" class="social-link">
+              <span class="social-icon">📸</span>
+              <span>Instagram</span>
+            </a>
+
+            <a href="mailto:erazoandres14@gmail.com" class="contact-link">
+              <div class="contact-link-content">
+                <i class="fas fa-envelope"></i>
+                <span>erazoandres14@gmail.com</span>
+              </div>
+              <button class="copy-email-btn" aria-label="Copiar email">
+                <i class="fas fa-copy"></i>
               </button>
-              <button class="carousel-arrow carousel-next">
-                <i class="fas fa-chevron-right"></i>
-              </button>
-              <div class="carousel-controls">
-                <div class="carousel-dot active"></div>
-                <div class="carousel-dot"></div>
-                <div class="carousel-dot"></div>
-              </div>
-            </div>
+              <div class="copy-message">¡Copiado!</div>
+            </a>
           </div>
+
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Mensaje</label>
+              <textarea id="message" name="message" placeholder="¿En qué puedo ayudarte?" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Enviar Mensaje</button>
+          </form>
         </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal de confirmación -->
+  <div class="modal" id="confirmationModal">
+    <div class="modal-content" id="confirmationContent">
+      <button class="modal-close" aria-label="Cerrar modal">×</button>
+      <div class="modal-icon">
+        <i class="fas fa-check-circle"></i>
       </div>
-    </section>
-    <section id="projects" class="section" tabindex="0" aria-label="Proyectos">
-      <div class="typewriter-container">
-        <p id="text-skills" class="typewriter-text"></p>
+      <div class="modal-message">
+        <h3>¡Mensaje Enviado!</h3>
+        <p>Tu mensaje ha sido enviado correctamente.</p>
+        <p class="modal-subtext">¡Gracias por contactarnos!</p>
       </div>
-      
-      <div class="projects-grid">
-        <h1>Proyectos Destacados</h1>
-        <div class="project-card">
-          <h3 class="project-title">Galaxy Explorer</h3>
-          <p class="project-description">Una aplicación web interactiva que permite explorar el universo en 3D, con datos reales de la NASA y visualizaciones impresionantes.</p>
-          <div class="project-tech">
-            <span class="tech-tag">Three.js</span>
-            <span class="tech-tag">WebGL</span>
-            <span class="tech-tag">NASA API</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link">🌐 Demo</a>
-            <a href="#" class="project-link">📦 GitHub</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <h3 class="project-title">Quantum Notes</h3>
-          <p class="project-description">Aplicación de notas con encriptación cuántica, interfaz minimalista y sincronización en tiempo real entre dispositivos.</p>
-          <div class="project-tech">
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">Firebase</span>
-            <span class="tech-tag">Web Crypto</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link">🌐 Demo</a>
-            <a href="#" class="project-link">📦 GitHub</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <h3 class="project-title">Neural Art</h3>
-          <p class="project-description">Plataforma de generación de arte usando inteligencia artificial, con estilos personalizables y exportación en alta resolución.</p>
-          <div class="project-tech">
-            <span class="tech-tag">TensorFlow.js</span>
-            <span class="tech-tag">Canvas API</span>
-            <span class="tech-tag">Web Workers</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link">🌐 Demo</a>
-            <a href="#" class="project-link">📦 GitHub</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <h3 class="project-title">Cosmic Weather</h3>
-          <p class="project-description">Aplicación de clima con visualización de datos atmosféricos en tiempo real y predicciones basadas en machine learning.</p>
-          <div class="project-tech">
-            <span class="tech-tag">Vue.js</span>
-            <span class="tech-tag">D3.js</span>
-            <span class="tech-tag">OpenWeather API</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link">🌐 Demo</a>
-            <a href="#" class="project-link">📦 GitHub</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="skills" class="section" tabindex="0" aria-label="Habilidades">
-      <div class="skills-container">
-        <h1>Mis Habilidades</h1>
-        <div class="skill-category">
-          <h3 class="category-title">
-            <i class="fas fa-code"></i>
-            Frontend
-          </h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>React</span>
-              <span class="skill-percentage">95%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 95%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>JavaScript</span>
-              <span class="skill-percentage">90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 90%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>HTML/CSS</span>
-              <span class="skill-percentage">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 85%"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h3 class="category-title">
-            <i class="fas fa-server"></i>
-            Backend
-          </h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Node.js</span>
-              <span class="skill-percentage">92%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 92%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Python</span>
-              <span class="skill-percentage">88%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 88%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>SQL</span>
-              <span class="skill-percentage">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 85%"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h3 class="category-title">
-            <i class="fas fa-paint-brush"></i>
-            Design
-          </h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>UI/UX</span>
-              <span class="skill-percentage">93%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 93%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Figma</span>
-              <span class="skill-percentage">90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 90%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Photoshop</span>
-              <span class="skill-percentage">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 85%"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h3 class="category-title">
-            <i class="fas fa-tools"></i>
-            Tools
-          </h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Git</span>
-              <span class="skill-percentage">95%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 95%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Docker</span>
-              <span class="skill-percentage">88%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 88%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>AWS</span>
-              <span class="skill-percentage">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 85%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="contact" class="section" tabindex="0" aria-label="Contacto">
-      <h1>Contacto</h1>
-      <p id="text-skill3">¿Tienes un proyecto en mente? ¡Hablemos! Estoy disponible para colaboraciones y oportunidades.</p>
-      
-      <div class="contact-container">
-        <div class="social-links">
-          <a href="https://github.com/erazoandres" target="_blank" class="social-link">
-            <span class="social-icon">📦</span>
-            <span>GitHub</span>
-          </a>
-          <a href="https://www.linkedin.com/in/erazoandres1408/" target="_blank" class="social-link">
-            <span class="social-icon">💼</span>
-            <span>LinkedIn</span>
-          </a>
-          <a href="https://instagram.com/tuusuario" target="_blank" class="social-link">
-            <span class="social-icon">📸</span>
-            <span>Instagram</span>
-          </a>
-
-          <a href="mailto:erazoandres14@gmail.com" class="contact-link">
-            <div class="contact-link-content">
-              <i class="fas fa-envelope"></i>
-              <span>erazoandres14@gmail.com</span>
-            </div>
-            <button class="copy-email-btn" aria-label="Copiar email">
-              <i class="fas fa-copy"></i>
-            </button>
-            <div class="copy-message">¡Copiado!</div>
-          </a>
-        </div>
-
-        <form class="contact-form">
-          <div class="form-group">
-            <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
-          </div>
-          <div class="form-group">
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" placeholder="¿En qué puedo ayudarte?" required></textarea>
-          </div>
-          <button type="submit" class="submit-btn">Enviar Mensaje</button>
-        </form>
-      </div>
-    </section>
-  </main>
-</div>
-
-<!-- Modal de confirmación -->
-<div class="modal" id="confirmationModal">
-  <div class="modal-content" id="confirmationContent">
-    <button class="modal-close" aria-label="Cerrar modal">×</button>
-    <div class="modal-icon">
-      <i class="fas fa-check-circle"></i>
-    </div>
-    <div class="modal-message">
-      <h3>¡Mensaje Enviado!</h3>
-      <p>Tu mensaje ha sido enviado correctamente.</p>
-      <p class="modal-subtext">¡Gracias por contactarnos!</p>
     </div>
   </div>
-</div>
 
-<!-- Modal para imágenes -->
-<div class="modal" id="imageModal">
-  <div class="modal-content">
-    <div class="modal-close" id="modalClose">&times;</div>
-    <img src="" alt="Imagen ampliada" id="modalImage">
+  <!-- Modal para imágenes -->
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <div class="modal-close" id="modalClose">&times;</div>
+      <img src="" alt="Imagen ampliada" id="modalImage">
+    </div>
   </div>
-</div>
 
-    <script src="js/app.js"></script>
+  <script src="js/app.js"></script>
 </body>
+
 </html>
